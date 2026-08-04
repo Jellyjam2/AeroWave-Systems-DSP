@@ -13,7 +13,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # FIX: Install Python Dev Headers so pyo3 can compile
       - name: Install Python Dependencies
         run: |
           sudo apt-get update
@@ -22,8 +21,6 @@ jobs:
       - name: Setup Kani Rust Verifier
         uses: model-checking/kani-github-action@v0.32
         with:
-          args: --workspace --tests # Runs all proofs in the workspace
-
-      - name: Verification Success
-        if: success()
-        run: echo "✅ Kani Formal Verification Passed!"
+          # TARGET PATH REDIRECTION: Forces Kani to change directories into your Rust core before compiling
+          working-directory: ./
+          args: --workspace --all-targets
