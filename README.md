@@ -4,7 +4,7 @@
 
 A deterministic, lock-free cognitive audio synthesis engine built to aerospace-grade reliability standards using NASA and Tesla architectural paradigms. AeroWave transforms multi-dimensional language semantics and physiological bio-signals into mathematically optimized multi-track orchestral music with zero heap allocations.
 
-## 🚀 Architectural Innovations
+##  Architectural Innovations
 
 - **Postcard Binary Protocol Bridge**: Bypasses heavy JSON string parsing using a fixed-allocation 30-byte binary packet architecture, achieving a **3.60x speedup** in cross-runtime communication.
 - **64MB RAM Hypervisor Cache**: Features an in-memory mapped database that cuts response latency for recurring emotional signatures down to **0.15ms (an 89,000x speedup)**.
@@ -26,7 +26,7 @@ A deterministic, lock-free cognitive audio synthesis engine built to aerospace-g
                                               └────────────────────┘
 ```
 
-## 🛠️ Verification & Building
+##  Verification & Building
 
 This repository features formal mathematical verification built using the AWS Kani model checker to guarantee complete safety against runtime panics and buffer overflows.
 
