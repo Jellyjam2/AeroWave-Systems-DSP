@@ -1,5 +1,7 @@
 # AeroWave Systems DSP // Core Framework v1.0
 
+![Kani Verification](https://github.com/Jellyjam2/AeroWave-Systems-DSP/actions/workflows/kani.yml/badge.svg)
+
 A deterministic, lock-free cognitive audio synthesis engine built to aerospace-grade reliability standards using NASA and Tesla architectural paradigms. AeroWave transforms multi-dimensional language semantics and physiological bio-signals into mathematically optimized multi-track orchestral music with zero heap allocations.
 
 ## 🚀 Architectural Innovations
