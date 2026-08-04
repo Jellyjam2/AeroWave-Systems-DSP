@@ -50,26 +50,29 @@ def transmute():
         
         analysis_result = result['analysis']
         
+        # Handle missing emotional_vector gracefully
+        emotional_vector = analysis_result.get('emotional_vector', [])
+        
         return jsonify({
             'success': True,
-            'message': f'Transmuted {len(analysis_result["emotional_vector"])} emotional points into orchestral music',
-            'data_points': len(analysis_result['emotional_vector']),
-            'sentiment': analysis_result['sentiment'],
-            'arousal': analysis_result['arousal'],
-            'complexity': analysis_result['complexity'],
-            'cultural_context': analysis_result['cultural_context'],
-            'cultural_influence': analysis_result['cultural_influence'],
-            'generation_time': result['generation_time'],
-            'cache_hit': result['cache_hit'],
-            'sat_cache_hit': result['sat_cache_hit'],
-            'session_id': result['session_id'],
+            'message': f'Transmuted {len(emotional_vector)} emotional points into orchestral music',
+            'data_points': len(emotional_vector),
+            'sentiment': analysis_result.get('sentiment', 0.5),
+            'arousal': analysis_result.get('arousal', 0.5),
+            'complexity': analysis_result.get('complexity', 0.5),
+            'cultural_context': analysis_result.get('cultural_context', 'western'),
+            'cultural_influence': analysis_result.get('cultural_influence', 0.0),
+            'generation_time': result.get('generation_time', 0.0),
+            'cache_hit': result.get('cache_hit', False),
+            'sat_cache_hit': result.get('sat_cache_hit', False),
+            'session_id': result.get('session_id', ''),
             'analysis': {
-                'sentiment': f"{analysis_result['sentiment']:.2f}",
-                'arousal': f"{analysis_result['arousal']:.2f}",
-                'complexity': f"{analysis_result['complexity']:.2f}",
-                'valence': f"{analysis_result['valence']:.2f}",
-                'cultural_context': analysis_result['cultural_context'],
-                'cultural_influence': f"{analysis_result['cultural_influence']:.2f}"
+                'sentiment': f"{analysis_result.get('sentiment', 0.5):.2f}",
+                'arousal': f"{analysis_result.get('arousal', 0.5):.2f}",
+                'complexity': f"{analysis_result.get('complexity', 0.5):.2f}",
+                'valence': f"{analysis_result.get('valence', 0.5):.2f}",
+                'cultural_context': analysis_result.get('cultural_context', 'western'),
+                'cultural_influence': f"{analysis_result.get('cultural_influence', 0.0):.2f}"
             }
         })
     except Exception as e:
@@ -78,6 +81,8 @@ def transmute():
 @app.route('/download')
 def download():
     output_path = os.path.join(os.path.dirname(__file__), 'temp_output.mid')
+    if not os.path.exists(output_path):
+        return jsonify({'error': 'No MIDI file generated yet'}), 404
     return send_file(output_path, as_attachment=True, download_name='transmutation.mid')
 
 @app.route('/translate-culture', methods=['POST'])
@@ -91,10 +96,10 @@ def translate_culture():
     
     try:
         # Analyze original text
-        analysis_result = parser.parse(text)
+        analysis_result = cognitive_composer.parser.parse(text)
         
         # Translate to target culture
-        translated_profile = empathy_engine.translate_emotional_content(
+        translated_profile = cognitive_composer.empathy_engine.translate_emotional_content(
             analysis_result['cultural_profile'], target_culture
         )
         
@@ -105,7 +110,7 @@ def translate_culture():
         translated_analysis['cultural_context'] = target_culture
         
         output_path = os.path.join(os.path.dirname(__file__), f'temp_output_{target_culture}.mid')
-        generator.generate_midi(translated_analysis, output_path)
+        cognitive_composer.generator.generate_midi(translated_analysis, output_path)
         
         return jsonify({
             'success': True,
@@ -140,12 +145,12 @@ def submit_feedback():
         }
         
         user_id = data.get('user_id', 'anonymous')
-        feedback_record = learning_engine.record_feedback(user_id, analysis_result, feedback_data)
+        feedback_record = cognitive_composer.learning_engine.record_feedback(user_id, analysis_result, feedback_data)
         
         return jsonify({
             'success': True,
             'message': 'Feedback recorded successfully',
-            'feedback_id': len(learning_engine.feedback_history)
+            'feedback_id': len(cognitive_composer.learning_engine.feedback_history)
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -190,8 +195,8 @@ def export_project():
 def get_metrics():
     """Get system learning and performance metrics."""
     try:
-        learning_metrics = learning_engine.get_learning_metrics()
-        empathy_metrics = empathy_engine.generate_empathy_metrics()
+        learning_metrics = cognitive_composer.learning_engine.get_learning_metrics()
+        empathy_metrics = cognitive_composer.empathy_engine.generate_empathy_metrics()
         supported_formats = production_integrator.get_supported_formats()
         
         return jsonify({

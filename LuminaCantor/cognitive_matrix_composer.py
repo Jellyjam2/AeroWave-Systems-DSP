@@ -266,7 +266,7 @@ class CognitiveMatrixComposer:
     def _generate_midi_scheduled(self, analysis_result: Dict[str, Any]) -> str:
         """Schedule MIDI generation to audio core."""
         result = {'done': False, 'data': None}
-        output_path = "c:\\LUMINA RED PILL\\LuminaCantor\\temp_output.mid"
+        output_path = os.path.join(os.path.dirname(__file__), 'temp_output.mid')
         
         # Ensure directory exists
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
