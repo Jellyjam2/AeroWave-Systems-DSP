@@ -21,6 +21,5 @@ jobs:
       - name: Setup Kani Rust Verifier
         uses: model-checking/kani-github-action@v0.32
         with:
-          # TARGET PATH REDIRECTION: Forces Kani to change directories into your Rust core before compiling
           working-directory: ./
           args: --workspace --all-targets
