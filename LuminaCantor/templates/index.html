@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alchemical Cantor - Text to Music Transmutation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glow-button {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+            transition: all 0.3s ease;
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.8);
+            transform: translateY(-2px);
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen text-white">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                🜏 Alchemical Cantor
+            </h1>
+            <p class="text-xl text-gray-300">Transmute text into sonic resonance</p>
+        </div>
+
+        <!-- Main Card -->
+        <div class="glass-card rounded-2xl p-8 mb-8">
+            <!-- Input Section -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-300 mb-2">
+                    Enter your text (Prima Materia)
+                </label>
+                <textarea 
+                    id="textInput" 
+                    rows="8" 
+                    class="w-full bg-gray-900/50 border border-gray-700 rounded-lg p-4 text-white placeholder-gray-500 transition-all duration-300"
+                    placeholder="Shall I compare thee to a summer's day? Thou art more lovely and more temperate..."
+                ></textarea>
+            </div>
+
+            <!-- Transmute Button -->
+            <button 
+                id="transmuteBtn"
+                onclick="transmuteText()"
+                class="w-full glow-button bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300"
+            >
+                <span id="btnText">🜏 Transmute to Music</span>
+            </button>
+        </div>
+
+        <!-- Status Section -->
+        <div id="statusSection" class="glass-card rounded-2xl p-6 mb-8 hidden">
+            <div class="flex items-center space-x-3">
+                <div id="statusIcon" class="w-3 h-3 rounded-full bg-yellow-400 pulse-animation"></div>
+                <span id="statusText" class="text-gray-300">Processing...</span>
+            </div>
+            <div class="mt-4 bg-gray-900/50 rounded-full h-2 overflow-hidden">
+                <div id="progressBar" class="bg-gradient-to-r from-indigo-500 to-purple-500 h-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Result Section -->
+        <div id="resultSection" class="glass-card rounded-2xl p-6 hidden">
+            <h3 class="text-xl font-semibold mb-4 text-green-400">✨ Transmutation Complete!</h3>
+            <div class="bg-gray-900/50 rounded-lg p-4 mb-4">
+                <p id="resultText" class="text-gray-300"></p>
+            </div>
+            
+            <!-- Analysis Display -->
+            <div id="analysisSection" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 hidden">
+                <div class="bg-gray-900/50 rounded-lg p-3 text-center">
+                    <div class="text-2xl font-bold text-indigo-400" id="sentimentValue">0.50</div>
+                    <div class="text-xs text-gray-400">Sentiment</div>
+                </div>
+                <div class="bg-gray-900/50 rounded-lg p-3 text-center">
+                    <div class="text-2xl font-bold text-purple-400" id="arousalValue">0.50</div>
+                    <div class="text-xs text-gray-400">Arousal</div>
+                </div>
+                <div class="bg-gray-900/50 rounded-lg p-3 text-center">
+                    <div class="text-2xl font-bold text-pink-400" id="complexityValue">0.50</div>
+                    <div class="text-xs text-gray-400">Complexity</div>
+                </div>
+                <div class="bg-gray-900/50 rounded-lg p-3 text-center">
+                    <div class="text-2xl font-bold text-cyan-400" id="valenceValue">0.50</div>
+                    <div class="text-xs text-gray-400">Valence</div>
+                </div>
+            </div>
+            
+            <div class="space-y-3">
+                <a 
+                    id="downloadBtn"
+                    href="/download"
+                    download="transmutation.mid"
+                    class="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300"
+                >
+                    🎵 Download Orchestral MIDI File
+                </a>
+                
+                <button 
+                    id="playBtn"
+                    onclick="playMIDI()"
+                    class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300"
+                >
+                    ▶️ Play in Browser
+                </button>
+            </div>
+            
+            <div class="mt-4 text-sm text-gray-400">
+                <p><strong>How to play your MIDI file:</strong></p>
+                <ul class="list-disc list-inside mt-2 space-y-1">
+                    <li><strong>Play in Browser:</strong> Click the button above (uses Web Audio API)</li>
+                    <li><strong>Download:</strong> Save and play in any MIDI player</li>
+                    <li><strong>Online:</strong> <a href="https://onlinesequencer.net" target="_blank" class="text-indigo-400 hover:underline">onlinesequencer.net</a> → Import</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="grid md:grid-cols-3 gap-6 mt-12">
+            <div class="glass-card rounded-xl p-6 text-center">
+                <div class="text-3xl mb-3">📝</div>
+                <h3 class="font-semibold mb-2">Text Analysis</h3>
+                <p class="text-sm text-gray-400">Emotional weight, rhythm, and phrasing extraction</p>
+            </div>
+            <div class="glass-card rounded-xl p-6 text-center">
+                <div class="text-3xl mb-3">🎼</div>
+                <h3 class="font-semibold mb-2">Music Generation</h3>
+                <p class="text-sm text-gray-400">Algorithmic composition based on linguistic patterns</p>
+            </div>
+            <div class="glass-card rounded-xl p-6 text-center">
+                <div class="text-3xl mb-3">🔮</div>
+                <h3 class="font-semibold mb-2">Sonic Transmutation</h3>
+                <p class="text-sm text-gray-400">Transform words into musical resonance</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let audioContext = null;
+        let midiData = null;
+
+        async function transmuteText() {
+            const text = document.getElementById('textInput').value;
+            const btn = document.getElementById('transmuteBtn');
+            const btnText = document.getElementById('btnText');
+            const statusSection = document.getElementById('statusSection');
+            const resultSection = document.getElementById('resultSection');
+            const statusText = document.getElementById('statusText');
+            const progressBar = document.getElementById('progressBar');
+            const statusIcon = document.getElementById('statusIcon');
+
+            if (!text.trim()) {
+                alert('Please enter some text to transmute');
+                return;
+            }
+
+            // Show loading state
+            btn.disabled = true;
+            btnText.textContent = '⚗️ Transmuting...';
+            statusSection.classList.remove('hidden');
+            resultSection.classList.add('hidden');
+            statusText.textContent = 'Analyzing text patterns...';
+            progressBar.style.width = '25%';
+            statusIcon.className = 'w-3 h-3 rounded-full bg-yellow-400 pulse-animation';
+
+            try {
+                const response = await fetch('/transmute', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `text=${encodeURIComponent(text)}`
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    progressBar.style.width = '100%';
+                    statusText.textContent = 'Transmutation complete!';
+                    statusIcon.className = 'w-3 h-3 rounded-full bg-green-400';
+                    
+                    setTimeout(() => {
+                        statusSection.classList.add('hidden');
+                        resultSection.classList.remove('hidden');
+                        document.getElementById('resultText').textContent = 
+                            `Successfully transmuted ${data.data_points} emotional data points into orchestral music.`;
+                        
+                        // Display analysis data if available
+                        if (data.analysis) {
+                            document.getElementById('analysisSection').classList.remove('hidden');
+                            document.getElementById('sentimentValue').textContent = data.analysis.sentiment;
+                            document.getElementById('arousalValue').textContent = data.analysis.arousal;
+                            document.getElementById('complexityValue').textContent = data.analysis.complexity;
+                            document.getElementById('valenceValue').textContent = data.analysis.valence;
+                        }
+                    }, 500);
+                } else {
+                    throw new Error(data.error || 'Transmutation failed');
+                }
+            } catch (error) {
+                statusText.textContent = `Error: ${error.message}`;
+                statusIcon.className = 'w-3 h-3 rounded-full bg-red-400';
+                progressBar.style.width = '0%';
+            } finally {
+                btn.disabled = false;
+                btnText.textContent = '🜏 Transmute to Music';
+            }
+        }
+
+        async function playMIDI() {
+            try {
+                // Initialize audio context
+                if (!audioContext) {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                }
+
+                // Fetch the MIDI file
+                const response = await fetch('/download');
+                const arrayBuffer = await response.arrayBuffer();
+                
+                // Simple MIDI parser and player
+                playMIDIFile(arrayBuffer);
+            } catch (error) {
+                alert('Error playing MIDI: ' + error.message);
+            }
+        }
+
+        function playMIDIFile(arrayBuffer) {
+            // Simple synthesizer using Web Audio API
+            const view = new DataView(arrayBuffer);
+            
+            // Find MIDI track data (simplified approach)
+            let notes = [];
+            let tempo = 120;
+            let time = 0;
+            
+            // Parse MIDI header
+            if (view.getUint32(0) !== 0x4D546864) { // "MThd"
+                alert('Invalid MIDI file');
+                return;
+            }
+            
+            // Simple note extraction from MIDI
+            // This is a basic implementation - for full MIDI parsing, use a library like midi-parser-js
+            for (let i = 0; i < view.byteLength - 2; i++) {
+                // Look for note-on events (0x90-0x9F)
+                if (view.getUint8(i) >= 0x90 && view.getUint8(i) <= 0x9F) {
+                    const pitch = view.getUint8(i + 1);
+                    const velocity = view.getUint8(i + 2);
+                    if (velocity > 0) {
+                        notes.push({ pitch, time: time * 0.5 });
+                        time += 0.5;
+                    }
+                }
+            }
+            
+            // Play notes using oscillator
+            notes.forEach((note, index) => {
+                setTimeout(() => {
+                    playNote(note.pitch);
+                }, note.time * 1000);
+            });
+        }
+
+        function playNote(pitch) {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            // MIDI pitch to frequency
+            const frequency = 440 * Math.pow(2, (pitch - 69) / 12);
+            
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+        }
+    </script>
+</body>
+</html>
