@@ -1,0 +1,13 @@
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "aerowave_dsp"
+version = "0.1.0"
+description = "AeroWave Systems DSP - High-performance music generation engine with matrix-based composition"
+requires-python = ">=3.8"
+# Only essential pillars remain
+dependencies = [
+    "python-sat",
+]

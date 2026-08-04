@@ -1,0 +1,38 @@
+[package]
+name = "aerowave_dsp"
+version = "0.1.0"
+edition = "2021"
+description = "AeroWave Systems DSP - High-performance music generation engine"
+
+[lib]
+name = "aerowave_dsp"
+crate-type = ["cdylib"]
+
+[dependencies]
+# PyO3 bridge (latest for Python 3.14 support)
+pyo3 = { version = "0.29", features = ["extension-module"] }
+# The Parallel General (All i3 Cores)
+rayon = "1.8"
+# The High-Performance Rust Engine
+varisat = "0.2.2"
+# THE MISSING KEY: Thermal Noise for the Tunnel Strike
+rand = "0.8"
+# NASA-Grade Binary Serialization
+postcard = "1.0"
+# Zero-Allocation Stack Data Structures (Tesla/Embedded Standard)
+heapless = "0.7"
+# Cryptographic-Grade Memory Scrubbing (Defense Standard)
+zeroize = { version = "1.5", features = ["derive"] }
+# Lock-Free Concurrency for Real-Time Audio Streaming (NASA Standard)
+crossbeam-channel = "0.5"
+# Windows API for low-level thread affinity control
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.59", features = ["Win32_System_Threading"] }
+# Linear Algebra for Matrix-Based Music Theory
+nalgebra = "0.33"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
