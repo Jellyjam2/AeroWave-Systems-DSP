@@ -1,10 +1,11 @@
 [package]
-name = "titan_forge"
+name = "aerowave_dsp"
 version = "0.1.0"
 edition = "2021"
+description = "AeroWave Systems DSP - High-performance music generation engine"
 
 [lib]
-name = "titan_forge"
+name = "aerowave_dsp"
 crate-type = ["cdylib"]
 
 [dependencies]

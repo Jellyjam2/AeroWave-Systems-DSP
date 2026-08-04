@@ -13,7 +13,7 @@ from collections import deque
 import hashlib
 
 try:
-    from titan_forge import LockFreeAudioPipeline
+    from aerowave_dsp import LockFreeAudioPipeline
     RUST_LOCKFREE_AVAILABLE = True
 except ImportError:
     RUST_LOCKFREE_AVAILABLE = False

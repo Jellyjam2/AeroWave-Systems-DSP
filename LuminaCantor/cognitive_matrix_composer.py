@@ -19,7 +19,7 @@ from .cross_cultural_empathy import CrossCulturalEmpathyEngine
 from .realtime_learning import RealTimeLearningEngine
 
 try:
-    from titan_forge import MusicMatrix, LockFreeAudioPipeline
+    from aerowave_dsp import MusicMatrix, LockFreeAudioPipeline
     RUST_COMPONENTS_AVAILABLE = True
 except ImportError:
     RUST_COMPONENTS_AVAILABLE = False

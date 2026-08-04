@@ -1,13 +1,13 @@
 /**
- * Titan Forge SDK - C-Compatible Interface
+ * AeroWave Systems DSP - C-Compatible Interface
  * Version 1.0.0
  * 
  * High-performance music generation engine with NASA-grade architecture
  * Compatible with Unreal Engine (C++), Unity (C#), and other game engines
  */
 
-#ifndef TITAN_FORGE_H
-#define TITAN_FORGE_H
+#ifndef AEROWAVE_DSP_H
+#define AEROWAVE_DSP_H
 
 #include <stdint.h>
 #include <stddef.h>
@@ -21,13 +21,13 @@ extern "C" {
 // ============================================================================
 
 typedef enum {
-    TITAN_FORGE_SUCCESS = 0,
-    TITAN_FORGE_INVALID_HANDLE = 1,
-    TITAN_FORGE_NULL_POINTER = 2,
-    TITAN_FORGE_BUFFER_OVERFLOW = 3,
-    TITAN_FORGE_INVALID_DATA = 4,
-    TITAN_FORGE_INTERNAL_ERROR = 5
-} TitanForgeError;
+    AEROWAVE_SUCCESS = 0,
+    AEROWAVE_INVALID_HANDLE = 1,
+    AEROWAVE_NULL_POINTER = 2,
+    AEROWAVE_BUFFER_OVERFLOW = 3,
+    AEROWAVE_INVALID_DATA = 4,
+    AEROWAVE_INTERNAL_ERROR = 5
+} AeroWaveError;
 
 // ============================================================================
 // Opaque Handles (Forward Declarations)
@@ -45,7 +45,7 @@ typedef struct MusicMatrixHandle MusicMatrixHandle;
  * Get library version string
  * @returns Static string containing version (e.g., "1.0.0")
  */
-const char* titan_forge_get_version(void);
+const char* aerowave_get_version(void);
 
 /**
  * Get library capabilities as bit flags
@@ -56,7 +56,7 @@ const char* titan_forge_get_version(void);
  *          Bit 3: Heapless memory structures
  *          Bit 4: Zeroize memory scrubbing
  */
-uint32_t titan_forge_get_capabilities(void);
+uint32_t aerowave_get_capabilities(void);
 
 // ============================================================================
 // CognitivePayload API
@@ -66,14 +66,14 @@ uint32_t titan_forge_get_capabilities(void);
  * Create a new CognitivePayload instance
  * @returns Handle to the new instance, or NULL on failure
  */
-CognitivePayloadHandle* titan_forge_cognitive_payload_create(void);
+CognitivePayloadHandle* aerowave_cognitive_payload_create(void);
 
 /**
  * Destroy a CognitivePayload instance
  * @param handle Handle to the instance to destroy
- * @returns Error code (TITAN_FORGE_SUCCESS on success)
+ * @returns Error code (AEROWAVE_SUCCESS on success)
  */
-TitanForgeError titan_forge_cognitive_payload_destroy(CognitivePayloadHandle* handle);
+AeroWaveError aerowave_cognitive_payload_destroy(CognitivePayloadHandle* handle);
 
 /**
  * Unpack binary packet into CognitivePayload
@@ -84,9 +84,9 @@ TitanForgeError titan_forge_cognitive_payload_destroy(CognitivePayloadHandle* ha
  * @param out_arousal Output pointer for arousal value (0.0 to 1.0)
  * @param out_culture_id Output pointer for culture ID (0-3)
  * @param out_clauses_count Output pointer for number of SAT clauses
- * @returns Error code (TITAN_FORGE_SUCCESS on success)
+ * @returns Error code (AEROWAVE_SUCCESS on success)
  */
-TitanForgeError titan_forge_cognitive_payload_unpack(
+AeroWaveError aerowave_cognitive_payload_unpack(
     CognitivePayloadHandle* handle,
     const uint8_t* data,
     size_t data_len,
@@ -104,23 +104,23 @@ TitanForgeError titan_forge_cognitive_payload_unpack(
  * Create a new LockFreeAudioPipeline instance
  * @returns Handle to the new instance, or NULL on failure
  */
-LockFreeAudioPipelineHandle* titan_forge_lockfree_pipeline_create(void);
+LockFreeAudioPipelineHandle* aerowave_lockfree_pipeline_create(void);
 
 /**
  * Destroy a LockFreeAudioPipeline instance
  * @param handle Handle to the instance to destroy
- * @returns Error code (TITAN_FORGE_SUCCESS on success)
+ * @returns Error code (AEROWAVE_SUCCESS on success)
  */
-TitanForgeError titan_forge_lockfree_pipeline_destroy(LockFreeAudioPipelineHandle* handle);
+AeroWaveError aerowave_lockfree_pipeline_destroy(LockFreeAudioPipelineHandle* handle);
 
 /**
  * Push audio frames into lock-free pipeline
  * @param handle Handle to the LockFreeAudioPipeline instance
  * @param frames Pointer to audio frame data (int16 samples)
  * @param frame_count Number of frames to push
- * @returns Error code (TITAN_FORGE_SUCCESS on success, TITAN_FORGE_BUFFER_OVERFLOW if full)
+ * @returns Error code (AEROWAVE_SUCCESS on success, AEROWAVE_BUFFER_OVERFLOW if full)
  */
-TitanForgeError titan_forge_lockfree_pipeline_push(
+AeroWaveError aerowave_lockfree_pipeline_push(
     LockFreeAudioPipelineHandle* handle,
     const int16_t* frames,
     size_t frame_count
@@ -129,9 +129,9 @@ TitanForgeError titan_forge_lockfree_pipeline_push(
 /**
  * Spawn isolated audio worker thread
  * @param handle Handle to the LockFreeAudioPipeline instance
- * @returns Error code (TITAN_FORGE_SUCCESS on success)
+ * @returns Error code (AEROWAVE_SUCCESS on success)
  */
-TitanForgeError titan_forge_lockfree_pipeline_spawn_worker(LockFreeAudioPipelineHandle* handle);
+AeroWaveError aerowave_lockfree_pipeline_spawn_worker(LockFreeAudioPipelineHandle* handle);
 
 // ============================================================================
 // MusicMatrix API
@@ -141,23 +141,23 @@ TitanForgeError titan_forge_lockfree_pipeline_spawn_worker(LockFreeAudioPipeline
  * Create a new MusicMatrix instance
  * @returns Handle to the new instance, or NULL on failure
  */
-MusicMatrixHandle* titan_forge_music_matrix_create(void);
+MusicMatrixHandle* aerowave_music_matrix_create(void);
 
 /**
  * Destroy a MusicMatrix instance
  * @param handle Handle to the instance to destroy
- * @returns Error code (TITAN_FORGE_SUCCESS on success)
+ * @returns Error code (AEROWAVE_SUCCESS on success)
  */
-TitanForgeError titan_forge_music_matrix_destroy(MusicMatrixHandle* handle);
+AeroWaveError aerowave_music_matrix_destroy(MusicMatrixHandle* handle);
 
 /**
  * Create pitch transition matrix from emotional vector
  * @param handle Handle to the MusicMatrix instance
  * @param emotional_vector Pointer to emotional vector data (float array)
  * @param vector_len Length of emotional vector
- * @returns Error code (TITAN_FORGE_SUCCESS on success)
+ * @returns Error code (AEROWAVE_SUCCESS on success)
  */
-TitanForgeError titan_forge_music_matrix_create_pitch(
+AeroWaveError aerowave_music_matrix_create_pitch(
     MusicMatrixHandle* handle,
     const float* emotional_vector,
     size_t vector_len
@@ -172,10 +172,10 @@ TitanForgeError titan_forge_music_matrix_create_pitch(
  * @param error Error code to convert
  * @returns Static string describing the error
  */
-const char* titan_forge_error_to_string(TitanForgeError error);
+const char* aerowave_error_to_string(AeroWaveError error);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // TITAN_FORGE_H
+#endif // AEROWAVE_DSP_H

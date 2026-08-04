@@ -1,4 +1,4 @@
-# Titan Forge v1.0 - NASA-Grade Music Generation Engine
+# AeroWave Systems DSP v1.0 - High-Performance Music Generation Engine
 
 ## **Milestone Declaration**
 
@@ -29,12 +29,12 @@
 
 ## **Component Inventory**
 
-### **Rust Core (titan_forge)**
+### **Rust Core (aerowave_dsp)**
 - **Location:** `src/lib.rs`
 - **Build:** `maturin develop` (PyO3 extension)
 - **Classes:**
-  - `NeuralInverter` - Neural network inversion
-  - `UniversalIngestor` - Universal data ingestion
+  - `SignalProcessor` - Signal layer inversion
+  - `DataIngestor` - Universal data ingestion
   - `CognitivePayload` - Postcard binary bridge payload
   - `LockFreeAudioPipeline` - Lock-free audio streaming
   - `MusicMatrix` - Matrix-based music theory
@@ -120,7 +120,7 @@ python LuminaCantor/web_app.py
 
 ### **Verification**
 ```python
-import titan_forge
+import aerowave_dsp
 from LuminaCantor.web_app import app
 print("v1.0 systems operational")
 ```

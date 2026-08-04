@@ -3,9 +3,9 @@ requires = ["maturin>=1.0,<2.0"]
 build-backend = "maturin"
 
 [project]
-name = "titan_forge"
+name = "aerowave_dsp"
 version = "0.1.0"
-description = "🜏 LUMINA: STATEFUL SOVEREIGN VAULT"
+description = "AeroWave Systems DSP - High-performance music generation engine with matrix-based composition"
 requires-python = ">=3.8"
 # Only essential pillars remain
 dependencies = [

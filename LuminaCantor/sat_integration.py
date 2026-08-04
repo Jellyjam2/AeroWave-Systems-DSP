@@ -4,12 +4,12 @@ Uses titan_forge Rust backend for high-performance SAT solving with postcard bin
 """
 
 try:
-    from titan_forge.titan_forge import forge_1uip
+    from aerowave_dsp.aerowave_dsp import forge_1uip
     FORGE_1UIP_AVAILABLE = True
 except ImportError:
     FORGE_1UIP_AVAILABLE = False
 
-from titan_forge import CognitivePayload
+from aerowave_dsp import CognitivePayload
 from .postcard_bridge import PostcardBinaryBridge
 import numpy as np
 

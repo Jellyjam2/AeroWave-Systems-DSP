@@ -7,36 +7,36 @@ use crossbeam_channel::{bounded, Sender, Receiver};
 use nalgebra::{DMatrix, DVector};
 
 #[pyclass]
-pub struct NeuralInverter {}
+pub struct SignalProcessor {}
 
 #[pymethods]
-impl NeuralInverter {
+impl SignalProcessor {
     #[new]
-    fn new() -> Self { NeuralInverter {} }
+    fn new() -> Self { SignalProcessor {} }
 
-    /// THE MERCENARY STRIKE: Finding the 'Resonance Core' of an AI Layer
-    fn invert_neural_layer(&self, weights: Vec<f32>, threshold: f32) -> PyResult<(usize, f64, String)> {
+    /// Signal layer inversion for pattern analysis
+    fn invert_signal_layer(&self, weights: Vec<f32>, threshold: f32) -> PyResult<(usize, f64, String)> {
         let start = Instant::now();
         let principal_neurons: Vec<f32> = weights.into_iter()
             .filter(|&w| w.abs() > threshold)
             .collect();
         let duration = start.elapsed().as_secs_f64();
-        Ok((principal_neurons.len(), duration, format!("REDUCED_TO_{}_NEURONS", principal_neurons.len())))
+        Ok((principal_neurons.len(), duration, format!("REDUCED_TO_{}_SIGNALS", principal_neurons.len())))
     }
 }
 
 #[pyclass]
-pub struct UniversalIngestor {}
+pub struct DataIngestor {}
 
 #[pymethods]
-impl UniversalIngestor {
+impl DataIngestor {
     #[new]
-    fn new() -> Self { UniversalIngestor {} }
+    fn new() -> Self { DataIngestor {} }
 
-    fn strike_raw_logic(&self, raw_data: String) -> PyResult<(bool, f64, String)> {
+    fn process_raw_data(&self, raw_data: String) -> PyResult<(bool, f64, String)> {
         let start = Instant::now();
         let success = !raw_data.is_empty();
-        Ok((success, start.elapsed().as_secs_f64(), "RESONANCE_STABLE".to_string()))
+        Ok((success, start.elapsed().as_secs_f64(), "DATA_STABLE".to_string()))
     }
 }
 
@@ -385,10 +385,10 @@ impl MusicMatrix {
 }
 
 #[pymodule]
-fn titan_forge(m: &Bound<'_, PyModule>) -> PyResult<()> {
+fn aerowave_dsp(m: &Bound<'_, PyModule>) -> PyResult<()> {
     // CORRECT REGISTRATION: No angle brackets in the fn signature
-    m.add_class::<NeuralInverter>()?;
-    m.add_class::<UniversalIngestor>()?;
+    m.add_class::<SignalProcessor>()?;
+    m.add_class::<DataIngestor>()?;
     m.add_class::<CognitivePayload>()?;
     m.add_class::<LockFreeAudioPipeline>()?;
     m.add_class::<MusicMatrix>()?;

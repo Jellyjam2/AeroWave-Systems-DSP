@@ -12,7 +12,7 @@ import threading
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 try:
-    from titan_forge import LockFreeAudioPipeline
+    from aerowave_dsp import LockFreeAudioPipeline
     RUST_AVAILABLE = True
 except ImportError:
     RUST_AVAILABLE = False
