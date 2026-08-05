@@ -27,7 +27,8 @@ jobs:
       - name: Incinerate Stale Root Lockfile Cache
         run: rm -f ./Cargo.lock
 
-      - name: Setup Kani Rust Verifier
-        uses: model-checking/kani-github-action@v0.32
-        with:
-          args: --manifest-path ./Cargo.toml
+      - name: Install and Execute Kani Verifier Natively
+        run: |
+          cargo install --locked kani-verifier
+          cargo kani setup
+          cargo kani --manifest-path ./Cargo.toml
