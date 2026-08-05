@@ -101,7 +101,7 @@ cargo install --locked kani-verifier
 cargo kani
 ```
 
-## ✨ Features
+##  Features
 
 - **Text-to-Music Generation**: Transform natural language into multi-track orchestral MIDI compositions
 - **Bio-Feedback Integration**: Real-time physiological signal processing for therapeutic music generation
@@ -111,7 +111,7 @@ cargo kani
 - **Formal Verification**: Kani model checker ensures memory safety and correctness
 - **Web Interface**: Interactive dashboard for music generation and experimentation
 
-## 📊 Performance Benchmarks
+##  Performance Benchmarks
 
 - **Postcard Bridge**: 3.60x faster than JSON serialization
 - **RAM Cache**: 89,000x speedup for recurring emotional signatures
@@ -119,7 +119,7 @@ cargo kani
 - **Lock-Free Pipeline**: Zero GIL contention on dedicated CPU core
 - **Memory Profile**: Completely flat heap with zero allocations
 
-## 🏗️ Architecture
+##  Architecture
 
 AeroWave Systems DSP uses a multi-layered architecture:
 
@@ -129,7 +129,7 @@ AeroWave Systems DSP uses a multi-layered architecture:
 4. **Generation Layer**: Multi-track MIDI composition
 5. **Output Layer**: Real-time audio synthesis and file export
 
-## � Configuration
+##  Configuration
 
 ### Core Affinity
 
@@ -146,7 +146,7 @@ Adjust cache size in `LuminaCantor/ram_hypervisor_cache.py`:
 ram_cache = RAMHypervisorCache(cache_size_mb=64)
 ```
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Please follow these guidelines:
 
@@ -185,20 +185,20 @@ Contributions are welcome! Please follow these guidelines:
 - Export options (WAV, MP3, MIDI)
 - Project save/load functionality
 
-## �📄 Legal & Licensing
+## 📄 Legal & Licensing
 
 Licensed under the Apache License, Version 2.0 (the "License"). All usage, distribution, and commercial modifications are legally protected against third-party patent hijacking under Section 3 of the Apache covenant.
 
-## 🔒 Security
+##  Security
 
 For security vulnerability reporting, please see [SECURITY.md](SECURITY.md)
 
-## 📞 Support
+##  Support
 
 - **Issues**: https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP/issues
 - **Documentation**: https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP/wiki
 - **Discussions**: https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP/discussions
 
-## 🏆 Acknowledgments
+##  Acknowledgments
 
 Built with aerospace-grade reliability standards inspired by NASA and Tesla architectural paradigms.
