@@ -383,15 +383,15 @@ impl MusicMatrix {
     /// Get matrix dimensions for monitoring
     pub fn get_matrix_info(&self) -> PyResult<String> {
         let pitch_info = self.pitch_matrix.as_ref()
-            .map(|m| format!("{}x{}", m.nrows(), m.ncols()))
+            .map(|m: &DMatrix<f32>| format!("{}x{}", m.nrows(), m.ncols()))
             .unwrap_or("None".to_string());
 
         let rhythm_info = self.rhythm_matrix.as_ref()
-            .map(|m| format!("{}x{}", m.nrows(), m.ncols()))
+            .map(|m: &DMatrix<f32>| format!("{}x{}", m.nrows(), m.ncols()))
             .unwrap_or("None".to_string());
 
         let harmony_info = self.harmony_matrix.as_ref()
-            .map(|m| format!("{}x{}", m.nrows(), m.ncols()))
+            .map(|m: &DMatrix<f32>| format!("{}x{}", m.nrows(), m.ncols()))
             .unwrap_or("None".to_string());
 
         Ok(format!("Pitch: {}, Rhythm: {}, Harmony: {}", pitch_info, rhythm_info, harmony_info))
