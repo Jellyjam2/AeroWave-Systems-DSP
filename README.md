@@ -1,8 +1,12 @@
-# AeroWave Systems DSP // Core Framework v1.0
+# AeroWave Systems DSP // Core Framework v1.1
 
 ![Kani Verification](https://github.com/Jellyjam2/AeroWave-Systems-DSP/actions/workflows/kani.yml/badge.svg)
 
+**A product of [Black Swan Technologies](https://blackswantechnologies.com)**
+
 A deterministic, lock-free cognitive audio synthesis engine built to aerospace-grade reliability standards using NASA and Tesla architectural paradigms. AeroWave transforms multi-dimensional language semantics and physiological bio-signals into mathematically optimized multi-track orchestral music with zero heap allocations.
+
+**Developed by:** Enrico Heinrich Leitch
 
 ##  Architectural Innovations
 
@@ -154,25 +158,32 @@ Contributions are welcome! Please follow these guidelines:
 
 ## 🗺️ Roadmap
 
-### v1.0.1 (Stability Phase)
-- Bug fixes and performance optimizations
-- Enhanced error handling
-- Additional Kani proof harnesses
+### v1.1 (Current - Modern UI/UX) 
+- **COMPLETED:** High-end React frontend with glass-morphism UI
+- **COMPLETED:** TailwindCSS integration with custom theme
+- **COMPLETED:** Comprehensive settings panel (audio, processing, cultural, appearance)
+- **COMPLETED:** Share functionality (Twitter/Facebook integration)
+- **COMPLETED:** Developer info section with company branding
+- **COMPLETED:** Black Swan Technologies company integration
+- **COMPLETED:** Full Flask + React integration with CORS support
 
-### v1.1 (Expansion Phase)
-- Game Engine Plugin (C-API)
-- Enhanced bio-therapy features
-- Improved cultural adaptation
+### v1.2 (Real-Time Visualization)
+- Recharts-based cognitive matrix visualization
+- Real-time emotional state graphs
+- Music generation progress indicators
+- Bio-feedback signal displays
 
-### v1.2 (Advanced Features)
-- Creusot/Prusti formal verification
-- Advanced music theory algorithms
-- Multi-language support
+### v1.3 (Enhanced UX)
+- Dark/Light mode toggle
+- Mobile/tablet responsive design
+- Advanced keyboard shortcuts
+- Session management and history
 
-### v2.0 (Aerospace/Medical Phase)
-- Lean/Coq formal verification
-- FDA compliance features
-- NASA certification preparation
+### v1.4 (Advanced Features)
+- Real-time MIDI playback in browser
+- Audio waveform visualization
+- Export options (WAV, MP3, MIDI)
+- Project save/load functionality
 
 ## �📄 Legal & Licensing
 

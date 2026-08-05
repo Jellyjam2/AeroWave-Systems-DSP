@@ -11,6 +11,11 @@ readme = "README.md"
 keywords = ["audio", "dsp", "music", "cognitive", "synthesis"]
 categories = ["multimedia::audio", "science"]
 
+# Company Information
+[package.metadata.company]
+name = "Black Swan Technologies"
+url = "https://blackswantechnologies.com"
+
 [lib]
 name = "aerowave_dsp"
 crate-type = ["cdylib"]

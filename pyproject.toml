@@ -9,6 +9,9 @@ description = "AeroWave Systems DSP - High-performance music generation engine w
 authors = [
     {name = "Enrico Heinrich Leitch", email = "enrico@aerowave.systems"}
 ]
+maintainers = [
+    {name = "Black Swan Technologies", email = "info@blackswantechnologies.com"}
+]
 license = {text = "Apache-2.0"}
 readme = "README.md"
 requires-python = ">=3.8"
@@ -28,6 +31,12 @@ classifiers = [
     "Topic :: Multimedia :: Sound/Audio",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
+
+[project.urls]
+Homepage = "https://github.com/Jellyjam2/AeroWave-Systems-DSP"
+Repository = "https://github.com/Jellyjam2/AeroWave-Systems-DSP"
+Documentation = "https://github.com/Jellyjam2/AeroWave-Systems-DSP#readme"
+Company = "https://blackswantechnologies.com"
 # Only essential pillars remain
 dependencies = [
     "python-sat",

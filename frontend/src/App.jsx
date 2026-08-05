@@ -105,10 +105,10 @@ function App() {
       {/* Footer */}
       <footer className="glass-card m-4 p-6 text-center">
         <p className="text-gray-400">
-          © 2026 AeroWave Systems DSP by <span className="text-primary-400 font-semibold">Enrico Heinrich Leitch</span>
+          © 2026 <span className="text-primary-400 font-semibold">Black Swan Technologies</span> - AeroWave Systems DSP
         </p>
         <p className="text-sm text-gray-500 mt-2">
-          Licensed under Apache 2.0 | Built with aerospace-grade reliability
+          Developed by <span className="text-accent-400 font-semibold">Enrico Heinrich Leitch</span> | Licensed under Apache 2.0
         </p>
       </footer>
     </div>

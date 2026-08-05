@@ -22,7 +22,8 @@ function DeveloperInfo({ onClose }) {
             </div>
             <h3 className="text-2xl font-bold">Enrico Heinrich Leitch</h3>
             <p className="text-gray-400 mt-2">Founder & Lead Developer</p>
-            <p className="text-primary-400 text-sm">AeroWave Systems DSP</p>
+            <p className="text-primary-400 text-sm">Black Swan Technologies</p>
+            <p className="text-accent-400 text-xs mt-1">AeroWave Systems DSP</p>
           </div>
 
           {/* Contact */}
@@ -108,7 +109,7 @@ function DeveloperInfo({ onClose }) {
               Licensed under <span className="text-primary-400 font-semibold">Apache License 2.0</span>
             </p>
             <p className="text-xs text-gray-500 mt-1">
-              © 2026 Enrico Heinrich Leitch. All rights reserved.
+              © 2026 <span className="text-accent-400">Black Swan Technologies</span>. All rights reserved.
             </p>
           </div>
         </div>
