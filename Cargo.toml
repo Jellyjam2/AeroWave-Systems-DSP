@@ -25,11 +25,11 @@ heapless = "0.7"
 zeroize = { version = "1.5", features = ["derive"] }
 # Lock-Free Concurrency for Real-Time Audio Streaming (NASA Standard)
 crossbeam-channel = "0.5"
+# Linear Algebra for Matrix-Based Music Theory
+nalgebra = "0.33"
 # Windows API for low-level thread affinity control
 [target.'cfg(windows)'.dependencies]
 windows-sys = { version = "0.59", features = ["Win32_System_Threading"] }
-# Linear Algebra for Matrix-Based Music Theory
-nalgebra = "0.33"
 
 [profile.release]
 opt-level = 3
