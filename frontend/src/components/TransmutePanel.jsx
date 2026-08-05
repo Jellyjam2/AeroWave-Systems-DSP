@@ -16,7 +16,7 @@ function TransmutePanel() {
     setResult(null)
 
     try {
-      const response = await axios.post('/api/transmute', { text })
+      const response = await axios.post('/transmute', { text })
       setResult(response.data)
     } catch (err) {
       setError(err.response?.data?.error || 'Transmutation failed')
@@ -33,7 +33,7 @@ function TransmutePanel() {
 
   const handleDownload = async () => {
     try {
-      const response = await axios.get('/api/download', { responseType: 'blob' })
+      const response = await axios.get('/download', { responseType: 'blob' })
       const url = window.URL.createObjectURL(new Blob([response.data]))
       const link = document.createElement('a')
       link.href = url
@@ -154,8 +154,8 @@ function TransmutePanel() {
             
             <div style={{display: 'flex', flexDirection: 'column', gap: '12px'}}>
               <div>
-                <p style={{fontSize: '13px', color: '#71717a', marginBottom: '4px'}}>Generated MIDI</p>
-                <p style={{color: '#10b981', fontFamily: 'monospace', fontSize: '13px'}}>{result.midi_file}</p>
+                <p style={{fontSize: '13px', color: '#71717a', marginBottom: '4px'}}>Status</p>
+                <p style={{color: '#10b981', fontSize: '13px'}}>{result.message}</p>
               </div>
               
               {result.analysis && (
@@ -163,20 +163,28 @@ function TransmutePanel() {
                   <p style={{fontSize: '13px', color: '#71717a', marginBottom: '8px'}}>Analysis</p>
                   <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px', fontSize: '13px'}}>
                     <div>
-                      <span style={{color: '#71717a'}}>Emotion:</span>
-                      <span style={{color: '#fafafa', marginLeft: '8px'}}>{result.analysis.emotion || 'N/A'}</span>
+                      <span style={{color: '#71717a'}}>Sentiment:</span>
+                      <span style={{color: '#fafafa', marginLeft: '8px'}}>{result.analysis.sentiment}</span>
+                    </div>
+                    <div>
+                      <span style={{color: '#71717a'}}>Arousal:</span>
+                      <span style={{color: '#fafafa', marginLeft: '8px'}}>{result.analysis.arousal}</span>
                     </div>
                     <div>
                       <span style={{color: '#71717a'}}>Complexity:</span>
-                      <span style={{color: '#fafafa', marginLeft: '8px'}}>{result.analysis.complexity || 'N/A'}</span>
+                      <span style={{color: '#fafafa', marginLeft: '8px'}}>{result.analysis.complexity}</span>
                     </div>
                     <div>
-                      <span style={{color: '#71717a'}}>Duration:</span>
-                      <span style={{color: '#fafafa', marginLeft: '8px'}}>{result.analysis.duration || 'N/A'}</span>
+                      <span style={{color: '#71717a'}}>Valence:</span>
+                      <span style={{color: '#fafafa', marginLeft: '8px'}}>{result.analysis.valence}</span>
                     </div>
                     <div>
-                      <span style={{color: '#71717a'}}>Tracks:</span>
-                      <span style={{color: '#fafafa', marginLeft: '8px'}}>{result.analysis.tracks || 'N/A'}</span>
+                      <span style={{color: '#71717a'}}>Cultural Context:</span>
+                      <span style={{color: '#fafafa', marginLeft: '8px'}}>{result.analysis.cultural_context}</span>
+                    </div>
+                    <div>
+                      <span style={{color: '#71717a'}}>Data Points:</span>
+                      <span style={{color: '#fafafa', marginLeft: '8px'}}>{result.data_points}</span>
                     </div>
                   </div>
                 </div>
