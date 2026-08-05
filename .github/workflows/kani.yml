@@ -24,9 +24,6 @@ jobs:
           toolchain: stable
           override: true
 
-      - name: Incinerate Stale Root Lockfile Cache
-        run: rm -f ./Cargo.lock
-
       - name: Install and Execute Kani Verifier Natively
         run: |
           cargo install --locked kani-verifier
