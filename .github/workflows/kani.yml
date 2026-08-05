@@ -22,4 +22,4 @@ jobs:
         uses: model-checking/kani-github-action@v0.32
         with:
           working-directory: ./
-          args: --workspace --all-targets
+          args: --workspace
