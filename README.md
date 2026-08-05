@@ -199,6 +199,6 @@ For security vulnerability reporting, please see [SECURITY.md](SECURITY.md)
 - **Documentation**: https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP/wiki
 - **Discussions**: https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP/discussions
 
-## 🏆 Acknowledgments
+##  Acknowledgments
 
 Built with aerospace-grade reliability standards inspired by NASA and Tesla architectural paradigms.
