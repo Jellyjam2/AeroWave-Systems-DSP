@@ -18,31 +18,30 @@ function DeveloperInfo({ onClose }) {
           {/* Profile Section */}
           <div className="text-center">
             <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full flex items-center justify-center">
-              <span className="text-4xl font-bold">EHL</span>
+              <span className="text-4xl font-bold">TBS</span>
             </div>
-            <h3 className="text-2xl font-bold">Enrico Heinrich Leitch</h3>
-            <p className="text-gray-400 mt-2">Founder & Lead Developer</p>
-            <p className="text-primary-400 text-sm">Black Swan Technologies</p>
-            <p className="text-accent-400 text-xs mt-1">AeroWave Systems DSP</p>
+            <h3 className="text-2xl font-bold">Titan Black Swan Technologies</h3>
+            <p className="text-gray-400 mt-2">Engineering Division</p>
+            <p className="text-primary-400 text-sm">AeroWave Systems DSP</p>
           </div>
 
           {/* Contact */}
           <div className="flex justify-center gap-4">
             <a
-              href="https://github.com/Jellyjam2"
+              href="https://github.com/Titan-Black-Swan-Technologies"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-xl transition-all duration-300"
             >
               <Github className="w-5 h-5" />
-              <span>GitHub</span>
+              <span>GitHub Organization</span>
             </a>
             <a
-              href="mailto:enrico@aerowave.systems"
+              href="mailto:engineering@blackswan.tech"
               className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-xl transition-all duration-300"
             >
               <Mail className="w-5 h-5" />
-              <span>Email</span>
+              <span>Contact Engineering</span>
             </a>
           </div>
 
@@ -109,7 +108,7 @@ function DeveloperInfo({ onClose }) {
               Licensed under <span className="text-primary-400 font-semibold">Apache License 2.0</span>
             </p>
             <p className="text-xs text-gray-500 mt-1">
-              © 2026 <span className="text-accent-400">Black Swan Technologies</span>. All rights reserved.
+              © 2026 <span className="text-accent-400">Titan Black Swan Technologies</span>. All rights reserved.
             </p>
           </div>
         </div>

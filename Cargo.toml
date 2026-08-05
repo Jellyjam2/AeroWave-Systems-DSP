@@ -3,17 +3,17 @@ name = "aerowave_dsp"
 version = "0.1.0"
 edition = "2021"
 description = "AeroWave Systems DSP - High-performance music generation engine"
-authors = ["Enrico Heinrich Leitch <enrico@aerowave.systems>"]
+authors = ["Black Swan Technologies <engineering@blackswan.tech>"]
 license = "Apache-2.0"
-repository = "https://github.com/Jellyjam2/AeroWave-Systems-DSP"
-homepage = "https://github.com/Jellyjam2/AeroWave-Systems-DSP"
+repository = "https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP"
+homepage = "https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP"
 readme = "README.md"
 keywords = ["audio", "dsp", "music", "cognitive", "synthesis"]
 categories = ["multimedia::audio", "science"]
 
 # Company Information
 [package.metadata.company]
-name = "Black Swan Technologies"
+name = "Titan Black Swan Technologies"
 url = "https://blackswantechnologies.com"
 
 [lib]

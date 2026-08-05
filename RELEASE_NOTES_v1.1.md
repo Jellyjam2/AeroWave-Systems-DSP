@@ -2,8 +2,8 @@
 
 **Release Date:** August 5, 2026  
 **Version:** 1.1  
-**Company:** Black Swan Technologies  
-**Developer:** Enrico Heinrich Leitch
+**Company:** Titan Black Swan Technologies  
+**Engineering Team:** Titan Black Swan Technologies
 
 ---
 
@@ -178,7 +178,7 @@ The web interface will be available at http://localhost:5000
 
 ## 📄 Legal & Licensing
 
-**Copyright © 2026 Black Swan Technologies**
+**Copyright © 2026 Titan Black Swan Technologies**
 
 Licensed under the Apache License, Version 2.0 (the "License"). All usage, distribution, and commercial modifications are legally protected against third-party patent hijacking under Section 3 of the Apache covenant.
 
@@ -186,12 +186,12 @@ Licensed under the Apache License, Version 2.0 (the "License"). All usage, distr
 
 Built with aerospace-grade reliability standards inspired by NASA and Tesla architectural paradigms.
 
-**Company:** Black Swan Technologies  
-**Lead Developer:** Enrico Heinrich Leitch  
+**Company:** Titan Black Swan Technologies  
+**Engineering Team:** Titan Black Swan Technologies  
 **Project:** AeroWave Systems DSP
 
 ---
 
-**Download:** [GitHub Repository](https://github.com/Jellyjam2/AeroWave-Systems-DSP)  
-**Documentation:** [README.md](https://github.com/Jellyjam2/AeroWave-Systems-DSP#readme)  
-**Issues:** [GitHub Issues](https://github.com/Jellyjam2/AeroWave-Systems-DSP/issues)
+**Download:** [GitHub Repository](https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP)  
+**Documentation:** [README.md](https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP#readme)  
+**Issues:** [GitHub Issues](https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP/issues)

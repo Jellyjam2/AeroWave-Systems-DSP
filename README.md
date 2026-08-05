@@ -1,12 +1,12 @@
 # AeroWave Systems DSP // Core Framework v1.1
 
-![Kani Verification](https://github.com/Jellyjam2/AeroWave-Systems-DSP/actions/workflows/kani.yml/badge.svg)
+![Kani Verification](https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP/actions/workflows/kani.yml/badge.svg)
 
-**A product of [Black Swan Technologies](https://blackswantechnologies.com)**
+**Titan Black Swan Technologies** presents AeroWave Systems DSP
 
 A deterministic, lock-free cognitive audio synthesis engine built to aerospace-grade reliability standards using NASA and Tesla architectural paradigms. AeroWave transforms multi-dimensional language semantics and physiological bio-signals into mathematically optimized multi-track orchestral music with zero heap allocations.
 
-**Developed by:** Enrico Heinrich Leitch
+**Engineering Team:** Titan Black Swan Technologies
 
 ##  Architectural Innovations
 
@@ -28,7 +28,7 @@ A deterministic, lock-free cognitive audio synthesis engine built to aerospace-g
 
 ```bash
 # Clone the repository
-git clone https://github.com/Jellyjam2/AeroWave-Systems-DSP.git
+git clone https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP.git
 cd AeroWave-Systems-DSP
 
 # Build and install the Rust extension
@@ -195,9 +195,9 @@ For security vulnerability reporting, please see [SECURITY.md](SECURITY.md)
 
 ## 📞 Support
 
-- **Issues**: https://github.com/Jellyjam2/AeroWave-Systems-DSP/issues
-- **Documentation**: https://github.com/Jellyjam2/AeroWave-Systems-DSP/wiki
-- **Discussions**: https://github.com/Jellyjam2/AeroWave-Systems-DSP/discussions
+- **Issues**: https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP/issues
+- **Documentation**: https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP/wiki
+- **Discussions**: https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP/discussions
 
 ## 🏆 Acknowledgments
 
