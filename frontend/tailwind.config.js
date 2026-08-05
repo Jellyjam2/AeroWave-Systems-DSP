@@ -7,59 +7,46 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Titan Stealth Coating - Deep Void Black & Neon Accents
-        void: {
-          900: '#0a0a0f', // Deep void black
-          800: '#12121a', // Void surface
-          700: '#1a1a24', // Void highlight
+        // Obsidian Protocol - Enterprise Palette (Zinc & Slate)
+        obsidian: {
+          50: '#fafafa',
+          100: '#f4f4f5',
+          200: '#e4e4e7',
+          300: '#d4d4d8',
+          400: '#a1a1aa',
+          500: '#71717a',
+          600: '#52525b',
+          700: '#3f3f46',
+          800: '#27272a',
+          900: '#18181b',
+          950: '#09090b',
         },
-        neon: {
-          cyan: '#00f0ff', // Titan cyan accent
-          purple: '#b000ff', // Titan purple accent
-          green: '#00ff88', // Titan green accent
-          red: '#ff0044', // Titan red accent
+        slate: {
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
+          950: '#020617',
         },
-        glass: {
-          surface: 'rgba(10, 10, 15, 0.8)',
-          border: 'rgba(0, 240, 255, 0.1)',
-          highlight: 'rgba(0, 240, 255, 0.05)',
+        // Status colors only
+        status: {
+          success: '#10b981',
+          error: '#ef4444',
+          warning: '#f59e0b',
         }
       },
-      backgroundImage: {
-        'void-gradient': 'linear-gradient(135deg, #0a0a0f 0%, #1a1a24 100%)',
-        'neon-glow': 'radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%)',
-        'command-grid': `
-          linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px)
-        `,
-      },
-      animation: {
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'neon-flicker': 'neon-flicker 2s ease-in-out infinite',
-        'scanline': 'scanline 8s linear infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
-        'neon-flicker': {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.8' },
-        },
-        scanline: {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(100%)' },
-        },
+      borderWidth: {
+        'hairline': '1px',
       },
       boxShadow: {
-        'neon-cyan': '0 0 20px rgba(0, 240, 255, 0.3), 0 0 40px rgba(0, 240, 255, 0.1)',
-        'neon-purple': '0 0 20px rgba(176, 0, 255, 0.3), 0 0 40px rgba(176, 0, 255, 0.1)',
-        'glass': '0 8px 32px rgba(0, 0, 0, 0.4)',
-      },
-      backdropBlur: {
-        'glass': '20px',
+        'enterprise': '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+        'enterprise-lg': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
       },
     },
   },

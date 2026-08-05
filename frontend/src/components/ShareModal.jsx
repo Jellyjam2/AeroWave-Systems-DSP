@@ -1,91 +1,143 @@
-import { X, Link as LinkIcon, Twitter, Facebook, Copy, Check } from 'lucide-react'
 import { useState } from 'react'
+import { Share2, Copy, Check, Twitter, Facebook, ExternalLink, X } from 'lucide-react'
 
 function ShareModal({ onClose }) {
   const [copied, setCopied] = useState(false)
-  const shareUrl = 'https://github.com/Jellyjam2/AeroWave-Systems-DSP'
-  const shareText = 'Check out AeroWave Systems DSP - A cognitive audio synthesis engine built to aerospace-grade standards!'
+  const shareUrl = 'https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP'
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(shareUrl)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    } catch (err) {
-      console.error('Failed to copy:', err)
-    }
-  }
-
-  const handleTwitterShare = () => {
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`
-    window.open(twitterUrl, '_blank')
-  }
-
-  const handleFacebookShare = () => {
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`
-    window.open(facebookUrl, '_blank')
+  const handleCopy = () => {
+    navigator.clipboard.writeText(shareUrl)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
   return (
-    <div className="fixed inset-0 bg-void-900/90 backdrop-blur-glass flex items-center justify-center z-50 p-4">
-      <div className="glass-card rounded-2xl w-full max-w-md">
-        <div className="flex items-center justify-between p-6 border-b border-glass-border">
-          <div className="flex items-center gap-3">
-            <Share2 className="w-6 h-6 text-neon-cyan" />
-            <h2 className="text-2xl font-bold neon-text-cyan">TRANSMIT DATA</h2>
+    <div style={{
+      position: 'fixed',
+      inset: 0,
+      background: 'rgba(0, 0, 0, 0.5)',
+      backdropFilter: 'blur(4px)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 50,
+      padding: '16px'
+    }}>
+      <div style={{
+        background: '#18181b',
+        border: '1px solid #27272a',
+        borderRadius: '8px',
+        width: '100%',
+        maxWidth: '400px',
+        boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)'
+      }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '20px',
+          borderBottom: '1px solid #27272a'
+        }}>
+          <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+            <Share2 style={{width: '18px', height: '18px', color: '#71717a'}} />
+            <h2 style={{color: '#fafafa', fontSize: '18px', fontWeight: '600', margin: 0}}>Share</h2>
           </div>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-neon-cyan transition-colors"
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: '#71717a',
+              cursor: 'pointer',
+              padding: '4px',
+              borderRadius: '4px'
+            }}
           >
-            <X className="w-6 h-6" />
+            <X style={{width: '18px', height: '18px'}} />
           </button>
         </div>
 
-        <div className="p-6 space-y-6">
+        <div style={{padding: '20px', display: 'flex', flexDirection: 'column', gap: '16px'}}>
           {/* Copy URL */}
           <div>
-            <label className="block text-sm text-gray-400 mb-2">SYSTEM URL</label>
-            <div className="flex gap-2">
+            <label style={{display: 'block', fontSize: '13px', color: '#a1a1aa', marginBottom: '6px'}}>Repository URL</label>
+            <div style={{display: 'flex', gap: '6px'}}>
               <input
                 type="text"
                 readOnly
                 value={shareUrl}
-                className="input-field flex-1 rounded-lg p-3 font-mono text-sm"
+                style={{
+                  flex: 1,
+                  background: '#27272a',
+                  border: '1px solid #3f3f46',
+                  color: '#fafafa',
+                  borderRadius: '6px',
+                  padding: '8px 12px',
+                  fontFamily: 'monospace',
+                  fontSize: '13px'
+                }}
               />
               <button
                 onClick={handleCopy}
-                className="glow-button px-4 rounded-lg"
+                style={{
+                  background: '#27272a',
+                  border: '1px solid #3f3f46',
+                  color: '#fafafa',
+                  padding: '8px 12px',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
               >
-                {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
+                {copied ? <Check style={{width: '16px', height: '16px'}} /> : <Copy style={{width: '16px', height: '16px'}} />}
               </button>
             </div>
             {copied && (
-              <p className="text-neon-green text-sm mt-2">URL COPIED TO CLIPBOARD</p>
+              <p style={{color: '#10b981', fontSize: '13px', marginTop: '6px'}}>URL copied to clipboard</p>
             )}
           </div>
 
           {/* Social Sharing */}
           <div>
-            <label className="block text-sm text-gray-400 mb-3">SOCIAL TRANSMISSION</label>
-            <div className="space-y-3">
+            <label style={{display: 'block', fontSize: '13px', color: '#a1a1aa', marginBottom: '8px'}}>Social</label>
+            <div style={{display: 'flex', flexDirection: 'column', gap: '8px'}}>
               <a
-                href="https://twitter.com/intent/tweet?text=Check%20out%20AeroWave%20Systems%20DSP%20by%20Titan%20Black%20Swan%20Technologies%20-%20aerospace-grade%20cognitive%20audio%20synthesis%20engine%20https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP"
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent('Check out AeroWave Systems DSP - audio engine verified for 12ms latency ')}&url=${encodeURIComponent(shareUrl)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-4 py-3 bg-glass-highlight hover:bg-glass-border rounded-xl transition-all duration-300 border border-glass-border"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '8px 12px',
+                  background: '#27272a',
+                  border: '1px solid #3f3f46',
+                  borderRadius: '6px',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s ease'
+                }}
               >
-                <Twitter className="w-5 h-5 text-neon-cyan" />
-                <span className="text-neon-cyan">TRANSMIT VIA TWITTER</span>
+                <Twitter style={{width: '16px', height: '16px', color: '#71717a'}} />
+                <span style={{color: '#fafafa', fontSize: '14px'}}>Twitter</span>
               </a>
               <a
-                href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP"
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-4 py-3 bg-glass-highlight hover:bg-glass-border rounded-xl transition-all duration-300 border border-glass-border"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '8px 12px',
+                  background: '#27272a',
+                  border: '1px solid #3f3f46',
+                  borderRadius: '6px',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s ease'
+                }}
               >
-                <Facebook className="w-5 h-5 text-neon-purple" />
-                <span className="text-neon-purple">TRANSMIT VIA FACEBOOK</span>
+                <Facebook style={{width: '16px', height: '16px', color: '#71717a'}} />
+                <span style={{color: '#fafafa', fontSize: '14px'}}>Facebook</span>
               </a>
             </div>
           </div>
@@ -95,10 +147,26 @@ function ShareModal({ onClose }) {
             href={shareUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="glow-button w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2"
+            style={{
+              background: '#fafafa',
+              border: '1px solid #3f3f46',
+              color: '#09090b',
+              padding: '8px 16px',
+              borderRadius: '6px',
+              fontSize: '14px',
+              fontWeight: '500',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              justifyContent: 'center',
+              width: '100%',
+              textDecoration: 'none',
+              transition: 'all 0.2s ease'
+            }}
           >
-            <ExternalLink className="w-5 h-5" />
-            <span>OPEN IN NEW TAB</span>
+            <ExternalLink style={{width: '16px', height: '16px'}} />
+            <span>Open in new tab</span>
           </a>
         </div>
       </div>

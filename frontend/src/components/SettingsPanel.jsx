@@ -2,40 +2,90 @@ import { X, Volume2, Sliders, Globe, Palette, Settings, Zap, Cpu, Eye } from 'lu
 
 function SettingsPanel({ onClose }) {
   return (
-    <div className="fixed inset-0 bg-void-900/90 backdrop-blur-glass flex items-center justify-center z-50 p-4">
-      <div className="glass-card rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between p-6 border-b border-glass-border">
-          <div className="flex items-center gap-3">
-            <Settings className="w-6 h-6 text-neon-cyan" />
-            <h2 className="text-2xl font-bold neon-text-cyan">COMMAND PARAMETERS</h2>
+    <div style={{
+      position: 'fixed',
+      inset: 0,
+      background: 'rgba(0, 0, 0, 0.5)',
+      backdropFilter: 'blur(4px)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 50,
+      padding: '16px'
+    }}>
+      <div style={{
+        background: '#18181b',
+        border: '1px solid #27272a',
+        borderRadius: '8px',
+        width: '100%',
+        maxWidth: '512px',
+        maxHeight: '90vh',
+        overflowY: 'auto',
+        boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)'
+      }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '20px',
+          borderBottom: '1px solid #27272a'
+        }}>
+          <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+            <Settings style={{width: '18px', height: '18px', color: '#71717a'}} />
+            <h2 style={{color: '#fafafa', fontSize: '18px', fontWeight: '600', margin: 0}}>Settings</h2>
           </div>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-neon-cyan transition-colors"
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: '#71717a',
+              cursor: 'pointer',
+              padding: '4px',
+              borderRadius: '4px'
+            }}
           >
-            <X className="w-6 h-6" />
+            <X style={{width: '18px', height: '18px'}} />
           </button>
         </div>
 
-        <div className="p-6 space-y-8">
+        <div style={{padding: '20px', display: 'flex', flexDirection: 'column', gap: '24px'}}>
           {/* Audio Settings */}
           <div>
-            <h3 className="text-lg font-semibold text-neon-cyan mb-4 flex items-center gap-2">
-              <Zap className="w-5 h-5" />
-              AUDIO CONFIGURATION
+            <h3 style={{color: '#fafafa', fontSize: '14px', fontWeight: '600', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px'}}>
+              <Zap style={{width: '16px', height: '16px', color: '#71717a'}} />
+              Audio Configuration
             </h3>
-            <div className="space-y-4">
+            <div style={{display: 'flex', flexDirection: 'column', gap: '16px'}}>
               <div>
-                <label className="block text-sm text-gray-400 mb-2">Sample Rate</label>
-                <select className="input-field w-full rounded-lg p-3">
+                <label style={{display: 'block', fontSize: '13px', color: '#a1a1aa', marginBottom: '6px'}}>Sample Rate</label>
+                <select style={{
+                  width: '100%',
+                  background: '#27272a',
+                  border: '1px solid #3f3f46',
+                  color: '#fafafa',
+                  borderRadius: '6px',
+                  padding: '8px 12px',
+                  fontSize: '14px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+                }}>
                   <option>44100 Hz</option>
                   <option>48000 Hz</option>
                   <option>96000 Hz</option>
                 </select>
               </div>
               <div>
-                <label className="block text-sm text-gray-400 mb-2">Bit Depth</label>
-                <select className="input-field w-full rounded-lg p-3">
+                <label style={{display: 'block', fontSize: '13px', color: '#a1a1aa', marginBottom: '6px'}}>Bit Depth</label>
+                <select style={{
+                  width: '100%',
+                  background: '#27272a',
+                  border: '1px solid #3f3f46',
+                  color: '#fafafa',
+                  borderRadius: '6px',
+                  padding: '8px 12px',
+                  fontSize: '14px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+                }}>
                   <option>16-bit</option>
                   <option>24-bit</option>
                   <option>32-bit</option>
@@ -46,14 +96,23 @@ function SettingsPanel({ onClose }) {
 
           {/* Processing Settings */}
           <div>
-            <h3 className="text-lg font-semibold text-neon-purple mb-4 flex items-center gap-2">
-              <Cpu className="w-5 h-5" />
-              PROCESSING PARAMETERS
+            <h3 style={{color: '#fafafa', fontSize: '14px', fontWeight: '600', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px'}}>
+              <Cpu style={{width: '16px', height: '16px', color: '#71717a'}} />
+              Processing Parameters
             </h3>
-            <div className="space-y-4">
+            <div style={{display: 'flex', flexDirection: 'column', gap: '16px'}}>
               <div>
-                <label className="block text-sm text-gray-400 mb-2">Complexity Level</label>
-                <select className="input-field w-full rounded-lg p-3">
+                <label style={{display: 'block', fontSize: '13px', color: '#a1a1aa', marginBottom: '6px'}}>Complexity Level</label>
+                <select style={{
+                  width: '100%',
+                  background: '#27272a',
+                  border: '1px solid #3f3f46',
+                  color: '#fafafa',
+                  borderRadius: '6px',
+                  padding: '8px 12px',
+                  fontSize: '14px',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+                }}>
                   <option>Low</option>
                   <option>Medium</option>
                   <option>High</option>
@@ -61,58 +120,39 @@ function SettingsPanel({ onClose }) {
                 </select>
               </div>
               <div>
-                <label className="block text-sm text-gray-400 mb-2">Cache Size (MB)</label>
+                <label style={{display: 'block', fontSize: '13px', color: '#a1a1aa', marginBottom: '6px'}}>Cache Size (MB)</label>
                 <input
                   type="number"
                   defaultValue="64"
-                  className="input-field w-full rounded-lg p-3"
+                  style={{
+                    width: '100%',
+                    background: '#27272a',
+                    border: '1px solid #3f3f46',
+                    color: '#fafafa',
+                    borderRadius: '6px',
+                    padding: '8px 12px',
+                    fontSize: '14px',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+                  }}
                 />
               </div>
             </div>
           </div>
 
-          {/* Cultural Context */}
-          <div>
-            <h3 className="text-lg font-semibold text-neon-green mb-4 flex items-center gap-2">
-              <Globe className="w-5 h-5" />
-              CULTURAL CONTEXT
-            </h3>
-            <div>
-              <label className="block text-sm text-gray-400 mb-2">Cultural Style</label>
-              <select className="input-field w-full rounded-lg p-3">
-                <option>Western Classical</option>
-                <option>Eastern Traditional</option>
-                <option>Contemporary</option>
-                <option>Experimental</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Appearance */}
-          <div>
-            <h3 className="text-lg font-semibold text-neon-cyan mb-4 flex items-center gap-2">
-              <Eye className="w-5 h-5" />
-              INTERFACE CONFIGURATION
-            </h3>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-gray-300">Dark Mode</span>
-                <div className="w-12 h-6 bg-neon-cyan/20 rounded-full relative cursor-pointer">
-                  <div className="absolute right-1 top-1 w-4 h-4 bg-neon-cyan rounded-full"></div>
-                </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-300">Animations</span>
-                <div className="w-12 h-6 bg-neon-cyan/20 rounded-full relative cursor-pointer">
-                  <div className="absolute right-1 top-1 w-4 h-4 bg-neon-cyan rounded-full"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
           {/* Save Button */}
-          <button className="glow-button w-full py-3 rounded-xl font-semibold">
-            SAVE CONFIGURATION
+          <button style={{
+            background: '#fafafa',
+            border: '1px solid #3f3f46',
+            color: '#09090b',
+            padding: '8px 16px',
+            borderRadius: '6px',
+            fontSize: '14px',
+            fontWeight: '500',
+            cursor: 'pointer',
+            width: '100%',
+            transition: 'all 0.2s ease'
+          }}>
+            Save Settings
           </button>
         </div>
       </div>

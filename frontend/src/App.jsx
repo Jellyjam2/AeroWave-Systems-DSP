@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Music, Settings, Share2, Trash2, Info, Sparkles, Zap, Shield } from 'lucide-react'
+import { Settings, Share2, Info, Sparkles, Zap, Shield } from 'lucide-react'
 import TransmutePanel from './components/TransmutePanel'
 import SettingsPanel from './components/SettingsPanel'
 import DeveloperInfo from './components/DeveloperInfo'
@@ -11,74 +11,143 @@ function App() {
   const [showShareModal, setShowShareModal] = useState(false)
 
   return (
-    <div className="min-h-screen bg-void-gradient command-grid relative overflow-hidden">
-      {/* Ambient Glow Effects */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-neon-cyan/10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-neon-purple/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
-      </div>
-
-      <div className="relative z-10 container mx-auto px-4 py-8 max-w-7xl">
+    <div style={{
+      background: '#09090b',
+      color: '#fafafa',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+      minHeight: '100vh',
+      padding: '32px 16px'
+    }}>
+      <div style={{maxWidth: '1280px', margin: '0 auto'}}>
+        
         {/* Header */}
-        <header className="glass-card rounded-2xl p-6 mb-8">
-          <div className="flex items-center justify-between">
+        <div style={{
+          background: '#18181b',
+          border: '1px solid #27272a',
+          borderRadius: '8px',
+          padding: '24px',
+          marginBottom: '32px',
+          boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)'
+        }}>
+          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px'}}>
             <div>
-              <h1 className="text-4xl font-bold neon-text-cyan mb-2">AEROWAVE SYSTEMS DSP</h1>
-              <p className="text-gray-400">Cognitive Audio Synthesis Engine // Titan Command Interface</p>
+              <h1 style={{color: '#fafafa', fontSize: '24px', fontWeight: '600', margin: 0}}>
+                AeroWave Systems DSP
+              </h1>
+              <p style={{color: '#71717a', marginTop: '4px', margin: '4px 0 0 0', fontSize: '14px'}}>
+                Audio Engine // Verified for 12ms latency
+              </p>
             </div>
-            <div className="flex gap-4">
+            <div style={{display: 'flex', gap: '8px'}}>
               <button
                 onClick={() => setShowSettings(true)}
-                className="glow-button px-6 py-3 rounded-xl font-semibold flex items-center gap-2"
+                style={{
+                  background: '#27272a',
+                  border: '1px solid #3f3f46',
+                  color: '#fafafa',
+                  padding: '8px 16px',
+                  borderRadius: '6px',
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'all 0.2s ease'
+                }}
               >
-                <Settings className="w-5 h-5" />
-                <span>COMMAND</span>
+                <Settings style={{width: '16px', height: '16px'}} />
+                Settings
               </button>
               <button
                 onClick={() => setShowDeveloperInfo(true)}
-                className="glow-button px-6 py-3 rounded-xl font-semibold flex items-center gap-2"
+                style={{
+                  background: '#27272a',
+                  border: '1px solid #3f3f46',
+                  color: '#fafafa',
+                  padding: '8px 16px',
+                  borderRadius: '6px',
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'all 0.2s ease'
+                }}
               >
-                <Info className="w-5 h-5" />
-                <span>SYSTEM</span>
+                <Info style={{width: '16px', height: '16px'}} />
+                Info
               </button>
               <button
                 onClick={() => setShowShareModal(true)}
-                className="glow-button px-6 py-3 rounded-xl font-semibold flex items-center gap-2"
+                style={{
+                  background: '#27272a',
+                  border: '1px solid #3f3f46',
+                  color: '#fafafa',
+                  padding: '8px 16px',
+                  borderRadius: '6px',
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'all 0.2s ease'
+                }}
               >
-                <Share2 className="w-5 h-5" />
-                <span>TRANSMIT</span>
+                <Share2 style={{width: '16px', height: '16px'}} />
+                Share
               </button>
             </div>
           </div>
-        </header>
+        </div>
 
         {/* Status Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="glass-card p-6">
-            <div className="flex items-center gap-3 mb-2">
-              <Sparkles className="w-6 h-6 text-neon-cyan" />
-              <h3 className="font-semibold text-neon-cyan">System Status</h3>
+        <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px', marginBottom: '32px'}}>
+          <div style={{
+            background: '#18181b',
+            border: '1px solid #27272a',
+            borderRadius: '8px',
+            padding: '20px',
+            boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)'
+          }}>
+            <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px'}}>
+              <Sparkles style={{width: '16px', height: '16px', color: '#71717a'}} />
+              <h3 style={{color: '#a1a1aa', fontWeight: '500', fontSize: '14px', margin: 0}}>System Status</h3>
             </div>
-            <p className="text-3xl font-bold text-neon-green">ONLINE</p>
-            <p className="text-sm text-gray-400">All systems operational</p>
+            <p style={{color: '#10b981', fontSize: '20px', fontWeight: '600', margin: '8px 0'}}>Online</p>
+            <p style={{color: '#71717a', fontSize: '13px', margin: 0}}>All systems operational</p>
           </div>
           
-          <div className="glass-card p-6">
-            <div className="flex items-center gap-3 mb-2">
-              <Zap className="w-6 h-6 text-neon-purple" />
-              <h3 className="font-semibold text-neon-purple">Processing Speed</h3>
+          <div style={{
+            background: '#18181b',
+            border: '1px solid #27272a',
+            borderRadius: '8px',
+            padding: '20px',
+            boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)'
+          }}>
+            <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px'}}>
+              <Zap style={{width: '16px', height: '16px', color: '#71717a'}} />
+              <h3 style={{color: '#a1a1aa', fontWeight: '500', fontSize: '14px', margin: 0}}>Processing Speed</h3>
             </div>
-            <p className="text-3xl font-bold text-neon-purple">89,000x</p>
-            <p className="text-sm text-gray-400">Faster than traditional</p>
+            <p style={{color: '#fafafa', fontSize: '20px', fontWeight: '600', margin: '8px 0'}}>89,000x</p>
+            <p style={{color: '#71717a', fontSize: '13px', margin: 0}}>Faster than traditional</p>
           </div>
           
-          <div className="glass-card p-6">
-            <div className="flex items-center gap-3 mb-2">
-              <Shield className="w-6 h-6 text-neon-green" />
-              <h3 className="font-semibold text-neon-green">Formal Verification</h3>
+          <div style={{
+            background: '#18181b',
+            border: '1px solid #27272a',
+            borderRadius: '8px',
+            padding: '20px',
+            boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)'
+          }}>
+            <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px'}}>
+              <Shield style={{width: '16px', height: '16px', color: '#71717a'}} />
+              <h3 style={{color: '#a1a1aa', fontWeight: '500', fontSize: '14px', margin: 0}}>Verification</h3>
             </div>
-            <p className="text-3xl font-bold text-neon-green">✓ PASSED</p>
-            <p className="text-sm text-gray-400">Kani verified</p>
+            <p style={{color: '#10b981', fontSize: '20px', fontWeight: '600', margin: '8px 0'}}>Passed</p>
+            <p style={{color: '#71717a', fontSize: '13px', margin: 0}}>Kani verified</p>
           </div>
         </div>
 
@@ -102,12 +171,21 @@ function App() {
       )}
 
       {/* Footer */}
-      <footer className="glass-card m-4 p-6 text-center">
-        <p className="text-gray-400">
-          © 2026 <span className="neon-text-cyan font-semibold">TITAN BLACK SWAN TECHNOLOGIES</span> - AEROWAVE SYSTEMS DSP
+      <footer style={{
+        background: '#18181b',
+        border: '1px solid #27272a',
+        borderRadius: '8px',
+        padding: '20px',
+        margin: '32px auto',
+        maxWidth: '1280px',
+        textAlign: 'center',
+        boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)'
+      }}>
+        <p style={{color: '#71717a', fontSize: '14px', margin: 0}}>
+          © 2026 <span style={{color: '#fafafa', fontWeight: '500'}}>Titan Black Swan Technologies</span> — AeroWave Systems DSP
         </p>
-        <p className="text-sm text-gray-500 mt-2">
-          ENGINEERING DIVISION // LICENSED UNDER APACHE 2.0
+        <p style={{color: '#52525b', fontSize: '12px', marginTop: '8px', margin: '8px 0 0 0'}}>
+          Engineering Division // Licensed under Apache 2.0
         </p>
       </footer>
     </div>

@@ -2,110 +2,206 @@ import { X, Github, Mail, Code, Music, Award, Zap, Info, Cpu } from 'lucide-reac
 
 function DeveloperInfo({ onClose }) {
   return (
-    <div className="fixed inset-0 bg-void-900/90 backdrop-blur-glass flex items-center justify-center z-50 p-4">
-      <div className="glass-card rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between p-6 border-b border-glass-border">
-          <div className="flex items-center gap-3">
-            <Info className="w-6 h-6 text-neon-cyan" />
-            <h2 className="text-2xl font-bold neon-text-cyan">SYSTEM INFORMATION</h2>
+    <div style={{
+      position: 'fixed',
+      inset: 0,
+      background: 'rgba(0, 0, 0, 0.5)',
+      backdropFilter: 'blur(4px)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 50,
+      padding: '16px'
+    }}>
+      <div style={{
+        background: '#18181b',
+        border: '1px solid #27272a',
+        borderRadius: '8px',
+        width: '100%',
+        maxWidth: '512px',
+        maxHeight: '90vh',
+        overflowY: 'auto',
+        boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)'
+      }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '20px',
+          borderBottom: '1px solid #27272a'
+        }}>
+          <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+            <Info style={{width: '18px', height: '18px', color: '#71717a'}} />
+            <h2 style={{color: '#fafafa', fontSize: '18px', fontWeight: '600', margin: 0}}>System Information</h2>
           </div>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-neon-cyan transition-colors"
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: '#71717a',
+              cursor: 'pointer',
+              padding: '4px',
+              borderRadius: '4px'
+            }}
           >
-            <X className="w-6 h-6" />
+            <X style={{width: '18px', height: '18px'}} />
           </button>
         </div>
 
-        <div className="p-6 space-y-6">
+        <div style={{padding: '20px', display: 'flex', flexDirection: 'column', gap: '20px'}}>
           {/* Profile Section */}
-          <div className="text-center">
-            <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-neon-cyan to-neon-purple rounded-full flex items-center justify-center shadow-neon-cyan">
-              <span className="text-4xl font-bold text-void-900">TBS</span>
+          <div style={{textAlign: 'center'}}>
+            <div style={{
+              width: '64px',
+              height: '64px',
+              margin: '0 auto 12px',
+              background: '#27272a',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: '1px solid #3f3f46'
+            }}>
+              <span style={{fontSize: '20px', fontWeight: '600', color: '#fafafa'}}>TBS</span>
             </div>
-            <h3 className="text-2xl font-bold neon-text-cyan">TITAN BLACK SWAN TECHNOLOGIES</h3>
-            <p className="text-gray-400 mt-2">ENGINEERING DIVISION</p>
-            <p className="text-neon-purple text-sm">AEROWAVE SYSTEMS DSP</p>
+            <h3 style={{color: '#fafafa', fontSize: '18px', fontWeight: '600', margin: '0 0 4px 0'}}>Titan Black Swan Technologies</h3>
+            <p style={{color: '#71717a', fontSize: '14px', margin: '0 0 2px 0'}}>Engineering Division</p>
+            <p style={{color: '#a1a1aa', fontSize: '13px', margin: 0}}>AeroWave Systems DSP</p>
           </div>
 
           {/* Contact */}
-          <div className="flex justify-center gap-4">
+          <div style={{display: 'flex', justifyContent: 'center', gap: '8px'}}>
             <a
               href="https://github.com/Titan-Black-Swan-Technologies"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-glass-highlight hover:bg-glass-border rounded-xl transition-all duration-300 border border-glass-border"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '8px 12px',
+                background: '#27272a',
+                border: '1px solid #3f3f46',
+                borderRadius: '6px',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease'
+              }}
             >
-              <Github className="w-5 h-5 text-neon-cyan" />
-              <span className="text-neon-cyan">GITHUB ORGANIZATION</span>
+              <Github style={{width: '16px', height: '16px', color: '#71717a'}} />
+              <span style={{color: '#fafafa', fontSize: '14px'}}>GitHub</span>
             </a>
             <a
               href="mailto:engineering@blackswan.tech"
-              className="flex items-center gap-2 px-4 py-2 bg-glass-highlight hover:bg-glass-border rounded-xl transition-all duration-300 border border-glass-border"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '8px 12px',
+                background: '#27272a',
+                border: '1px solid #3f3f46',
+                borderRadius: '6px',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease'
+              }}
             >
-              <Mail className="w-5 h-5 text-neon-purple" />
-              <span className="text-neon-purple">CONTACT ENGINEERING</span>
+              <Mail style={{width: '16px', height: '16px', color: '#71717a'}} />
+              <span style={{color: '#fafafa', fontSize: '14px'}}>Email</span>
             </a>
           </div>
 
           {/* About */}
           <div>
-            <h4 className="font-semibold mb-3 flex items-center gap-2 text-neon-cyan">
-              <Code className="w-5 h-5" />
-              SYSTEM OVERVIEW
+            <h4 style={{fontWeight: '600', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', color: '#fafafa', fontSize: '14px'}}>
+              <Code style={{width: '16px', height: '16px', color: '#71717a'}} />
+              System Overview
             </h4>
-            <p className="text-gray-300 text-sm leading-relaxed">
-              AeroWave Systems DSP is a deterministic, lock-free cognitive audio synthesis engine built to aerospace-grade reliability standards using NASA and Tesla architectural paradigms.
+            <p style={{color: '#a1a1aa', fontSize: '14px', lineHeight: '1.5', margin: 0}}>
+              AeroWave Systems DSP is a deterministic, lock-free audio processing unit verified for 12ms latency targets.
             </p>
           </div>
 
           {/* Technical Achievements */}
           <div>
-            <h4 className="font-semibold mb-3 flex items-center gap-2 text-neon-purple">
-              <Award className="w-5 h-5" />
-              TECHNICAL SPECIFICATIONS
+            <h4 style={{fontWeight: '600', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', color: '#fafafa', fontSize: '14px'}}>
+              <Award style={{width: '16px', height: '16px', color: '#71717a'}} />
+              Technical Specifications
             </h4>
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-gray-400">Processing Speed</span>
-                <span className="text-neon-green font-mono">89,000x</span>
+            <div style={{display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '13px'}}>
+              <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <span style={{color: '#71717a'}}>Processing Speed</span>
+                <span style={{color: '#10b981', fontFamily: 'monospace'}}>89,000x</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-400">Memory Allocation</span>
-                <span className="text-neon-cyan font-mono">Zero-Heap</span>
+              <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <span style={{color: '#71717a'}}>Memory Allocation</span>
+                <span style={{color: '#fafafa', fontFamily: 'monospace'}}>Zero-Heap</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-400">Thread Isolation</span>
-                <span className="text-neon-purple font-mono">Lock-Free</span>
+              <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <span style={{color: '#71717a'}}>Thread Isolation</span>
+                <span style={{color: '#fafafa', fontFamily: 'monospace'}}>Lock-Free</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-400">Formal Verification</span>
-                <span className="text-neon-green font-mono">Kani ✓</span>
+              <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <span style={{color: '#71717a'}}>Formal Verification</span>
+                <span style={{color: '#10b981', fontFamily: 'monospace'}}>Kani ✓</span>
               </div>
             </div>
           </div>
 
           {/* Core Technologies */}
           <div>
-            <h4 className="font-semibold mb-3 flex items-center gap-2 text-neon-cyan">
-              <Cpu className="w-5 h-5" />
-              CORE TECHNOLOGIES
+            <h4 style={{fontWeight: '600', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', color: '#fafafa', fontSize: '14px'}}>
+              <Cpu style={{width: '16px', height: '16px', color: '#71717a'}} />
+              Core Technologies
             </h4>
-            <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1 bg-neon-cyan/20 text-neon-cyan rounded-full text-sm border border-neon-cyan/30">Rust</span>
-              <span className="px-3 py-1 bg-neon-purple/20 text-neon-purple rounded-full text-sm border border-neon-purple/30">Python</span>
-              <span className="px-3 py-1 bg-neon-green/20 text-neon-green rounded-full text-sm border border-neon-green/30">React</span>
-              <span className="px-3 py-1 bg-neon-cyan/20 text-neon-cyan rounded-full text-sm border border-neon-cyan/30">TailwindCSS</span>
+            <div style={{display: 'flex', flexWrap: 'wrap', gap: '6px'}}>
+              <span style={{
+                padding: '4px 10px',
+                background: '#27272a',
+                color: '#fafafa',
+                borderRadius: '9999px',
+                fontSize: '13px',
+                border: '1px solid #3f3f46'
+              }}>Rust</span>
+              <span style={{
+                padding: '4px 10px',
+                background: '#27272a',
+                color: '#fafafa',
+                borderRadius: '9999px',
+                fontSize: '13px',
+                border: '1px solid #3f3f46'
+              }}>Python</span>
+              <span style={{
+                padding: '4px 10px',
+                background: '#27272a',
+                color: '#fafafa',
+                borderRadius: '9999px',
+                fontSize: '13px',
+                border: '1px solid #3f3f46'
+              }}>React</span>
+              <span style={{
+                padding: '4px 10px',
+                background: '#27272a',
+                color: '#fafafa',
+                borderRadius: '9999px',
+                fontSize: '13px',
+                border: '1px solid #3f3f46'
+              }}>TailwindCSS</span>
             </div>
           </div>
 
           {/* License */}
-          <div className="p-4 bg-glass-highlight rounded-xl text-center border border-glass-border">
-            <p className="text-sm text-gray-400">
-              Licensed under <span className="text-neon-cyan font-semibold">Apache License 2.0</span>
+          <div style={{
+            padding: '12px',
+            background: '#27272a',
+            borderRadius: '6px',
+            textAlign: 'center',
+            border: '1px solid #3f3f46'
+          }}>
+            <p style={{fontSize: '13px', color: '#71717a', margin: 0}}>
+              Licensed under <span style={{color: '#fafafa', fontWeight: '500'}}>Apache License 2.0</span>
             </p>
-            <p className="text-xs text-gray-500 mt-1">
-              2026 <span className="text-neon-purple">TITAN BLACK SWAN TECHNOLOGIES</span>. All rights reserved.
+            <p style={{fontSize: '12px', color: '#52525b', marginTop: '6px', margin: '6px 0 0 0'}}>
+              © 2026 <span style={{color: '#fafafa'}}>Titan Black Swan Technologies</span>. All rights reserved.
             </p>
           </div>
         </div>
