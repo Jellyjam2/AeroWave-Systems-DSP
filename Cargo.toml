@@ -3,6 +3,13 @@ name = "aerowave_dsp"
 version = "0.1.0"
 edition = "2021"
 description = "AeroWave Systems DSP - High-performance music generation engine"
+authors = ["Enrico Heinrich Leitch <enrico@aerowave.systems>"]
+license = "Apache-2.0"
+repository = "https://github.com/Jellyjam2/AeroWave-Systems-DSP"
+homepage = "https://github.com/Jellyjam2/AeroWave-Systems-DSP"
+readme = "README.md"
+keywords = ["audio", "dsp", "music", "cognitive", "synthesis"]
+categories = ["multimedia::audio", "science"]
 
 [lib]
 name = "aerowave_dsp"

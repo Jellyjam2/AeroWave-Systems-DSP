@@ -10,3 +10,14 @@ TEST/
 TXT's/
 Extra Scripts/
 SPECIAL SCRIPTS TO REPLACE/
+
+# Python virtual environment
+.venv/
+venv/
+
+# Node modules and frontend build
+frontend/node_modules/
+frontend/.vite/
+
+# AI Handoff Documentation (keep local)
+AI_HANDOFF_DOCUMENTATION.md

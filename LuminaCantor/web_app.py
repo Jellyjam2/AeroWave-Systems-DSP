@@ -1,9 +1,11 @@
-from flask import Flask, render_template, request, send_file, jsonify
+from flask import Flask, render_template, request, send_file, jsonify, send_from_directory
 import os
 import sys
+from flask_cors import CORS
 
 # Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 from LuminaCantor.cognitive_matrix_composer import CognitiveMatrixComposer
 from LuminaCantor.music_production_integration import MusicProductionIntegrator
@@ -15,6 +17,7 @@ except ImportError:
     PULSE_MAPPER_AVAILABLE = False
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
+CORS(app)  # Enable CORS for React frontend
 
 # Initialize Cognitive Matrix Composer (industrial-grade system)
 cognitive_composer = CognitiveMatrixComposer()
@@ -29,9 +32,22 @@ else:
     pulse_mapper = None
     bio_feedback_loop = None
 
+# Serve React app
 @app.route('/')
 def index():
+    # Serve React app from build directory if it exists, otherwise fallback to templates
+    frontend_build = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'frontend', 'dist')
+    if os.path.exists(frontend_build):
+        return send_from_directory(frontend_build, 'index.html')
     return render_template('index.html')
+
+# Serve static files from React build
+@app.route('/assets/<path:path>')
+def serve_assets(path):
+    frontend_build = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'frontend', 'dist')
+    if os.path.exists(frontend_build):
+        return send_from_directory(os.path.join(frontend_build, 'assets'), path)
+    return send_from_directory('static', path)
 
 @app.route('/transmute', methods=['POST'])
 def transmute():
