@@ -18,10 +18,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y python3-dev
 
+      - name: Incinerate Stale Root Lockfile Cache
+        run: rm -f ./Cargo.lock
+
       - name: Setup Kani Rust Verifier
         uses: model-checking/kani-github-action@v0.32
-        env:
-          CARGO_MANIFEST_DIR: .
-          CARGO_TARGET_DIR: ./target
         with:
           args: --manifest-path ./Cargo.toml
