@@ -27,80 +27,79 @@ function ShareModal({ onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="glass-card w-full max-w-md">
-        <div className="flex items-center justify-between p-6 border-b border-white/10">
-          <h2 className="text-2xl font-bold">Share AeroWave</h2>
+    <div className="fixed inset-0 bg-void-900/90 backdrop-blur-glass flex items-center justify-center z-50 p-4">
+      <div className="glass-card rounded-2xl w-full max-w-md">
+        <div className="flex items-center justify-between p-6 border-b border-glass-border">
+          <div className="flex items-center gap-3">
+            <Share2 className="w-6 h-6 text-neon-cyan" />
+            <h2 className="text-2xl font-bold neon-text-cyan">TRANSMIT DATA</h2>
+          </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-white/10 rounded-lg transition-all duration-300"
+            className="text-gray-400 hover:text-neon-cyan transition-colors"
           >
             <X className="w-6 h-6" />
           </button>
         </div>
 
         <div className="p-6 space-y-6">
-          {/* URL Copy */}
+          {/* Copy URL */}
           <div>
-            <label className="block text-sm text-gray-400 mb-2">Project URL</label>
+            <label className="block text-sm text-gray-400 mb-2">SYSTEM URL</label>
             <div className="flex gap-2">
               <input
                 type="text"
-                value={shareUrl}
                 readOnly
-                className="input-field flex-1"
+                value={shareUrl}
+                className="input-field flex-1 rounded-lg p-3 font-mono text-sm"
               />
               <button
                 onClick={handleCopy}
-                className="p-3 bg-primary-500 hover:bg-primary-600 rounded-xl transition-all duration-300"
-                title="Copy URL"
+                className="glow-button px-4 rounded-lg"
               >
                 {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
               </button>
             </div>
+            {copied && (
+              <p className="text-neon-green text-sm mt-2">URL COPIED TO CLIPBOARD</p>
+            )}
           </div>
 
-          {/* Social Share Buttons */}
+          {/* Social Sharing */}
           <div>
-            <label className="block text-sm text-gray-400 mb-3">Share on Social Media</label>
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                onClick={handleTwitterShare}
-                className="flex items-center justify-center gap-2 p-3 bg-[#1DA1F2]/20 hover:bg-[#1DA1F2]/30 border border-[#1DA1F2]/50 rounded-xl transition-all duration-300"
+            <label className="block text-sm text-gray-400 mb-3">SOCIAL TRANSMISSION</label>
+            <div className="space-y-3">
+              <a
+                href="https://twitter.com/intent/tweet?text=Check%20out%20AeroWave%20Systems%20DSP%20by%20Titan%20Black%20Swan%20Technologies%20-%20aerospace-grade%20cognitive%20audio%20synthesis%20engine%20https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-4 py-3 bg-glass-highlight hover:bg-glass-border rounded-xl transition-all duration-300 border border-glass-border"
               >
-                <Twitter className="w-5 h-5 text-[#1DA1F2]" />
-                <span>Twitter</span>
-              </button>
-              <button
-                onClick={handleFacebookShare}
-                className="flex items-center justify-center gap-2 p-3 bg-[#4267B2]/20 hover:bg-[#4267B2]/30 border border-[#4267B2]/50 rounded-xl transition-all duration-300"
+                <Twitter className="w-5 h-5 text-neon-cyan" />
+                <span className="text-neon-cyan">TRANSMIT VIA TWITTER</span>
+              </a>
+              <a
+                href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/Titan-Black-Swan-Technologies/AeroWave-Systems-DSP"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-4 py-3 bg-glass-highlight hover:bg-glass-border rounded-xl transition-all duration-300 border border-glass-border"
               >
-                <Facebook className="w-5 h-5 text-[#4267B2]" />
-                <span>Facebook</span>
-              </button>
+                <Facebook className="w-5 h-5 text-neon-purple" />
+                <span className="text-neon-purple">TRANSMIT VIA FACEBOOK</span>
+              </a>
             </div>
           </div>
 
-          {/* Direct Link */}
-          <div>
-            <label className="block text-sm text-gray-400 mb-2">Direct Link</label>
-            <a
-              href={shareUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 p-3 bg-white/10 hover:bg-white/20 rounded-xl transition-all duration-300"
-            >
-              <LinkIcon className="w-5 h-5" />
-              <span>Open in New Tab</span>
-            </a>
-          </div>
-
-          {/* Info */}
-          <div className="p-4 bg-white/5 rounded-xl text-center">
-            <p className="text-sm text-gray-400">
-              Help spread the word about aerospace-grade cognitive audio synthesis!
-            </p>
-          </div>
+          {/* Open Link */}
+          <a
+            href={shareUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="glow-button w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2"
+          >
+            <ExternalLink className="w-5 h-5" />
+            <span>OPEN IN NEW TAB</span>
+          </a>
         </div>
       </div>
     </div>

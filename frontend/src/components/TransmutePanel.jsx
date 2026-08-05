@@ -49,94 +49,103 @@ function TransmutePanel() {
   return (
     <div className="glass-card p-8">
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-2 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg">
-          <Music className="w-6 h-6 text-white" />
-        </div>
-        <h2 className="text-xl font-bold">Cognitive Transmutation</h2>
+        <Music className="w-8 h-8 text-neon-cyan" />
+        <h2 className="text-2xl font-bold neon-text-cyan">TRANSMUTE COMMAND</h2>
       </div>
-
-      <div className="space-y-4">
-        <div className="relative">
+      
+      <div className="space-y-6">
+        {/* Input Area */}
+        <div>
+          <label className="block text-sm font-semibold text-neon-cyan mb-2">
+            INPUT DATA
+          </label>
           <textarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="Enter your emotional text or bio-feedback data..."
-            className="input-field w-full h-40 resize-none"
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+            placeholder="Enter text description for audio synthesis..."
+            className="input-field w-full h-40 rounded-xl p-4 resize-none"
           />
-          <button
-            onClick={handleClear}
-            className="absolute top-3 right-3 p-2 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-300"
-            title="Clear text"
-          >
-            <Trash2 className="w-4 h-4" />
-          </button>
         </div>
 
-        <div className="flex gap-3">
+        {/* Action Buttons */}
+        <div className="flex gap-4">
           <button
             onClick={handleTransmute}
-            disabled={loading || !text.trim()}
-            className="glow-button flex-1 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            disabled={loading || !inputText.trim()}
+            className="glow-button px-8 py-3 rounded-xl font-semibold flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed flex-1"
           >
             {loading ? (
               <>
-                <Loader2 className="w-5 h-5 animate-spin" />
-                Processing...
+                <div className="w-5 h-5 border-2 border-neon-cyan border-t-transparent rounded-full animate-spin"></div>
+                <span>PROCESSING...</span>
               </>
             ) : (
               <>
-                <Send className="w-5 h-5" />
-                Transmute to Music
+                <Zap className="w-5 h-5" />
+                <span>EXECUTE TRANSMUTE</span>
               </>
             )}
           </button>
-
-          {result && (
-            <button
-              onClick={handleDownload}
-              className="glow-button flex items-center justify-center gap-2"
-            >
-              <Download className="w-5 h-5" />
-              Download MIDI
-            </button>
-          )}
+          
+          <button
+            onClick={handleClear}
+            className="glow-button px-6 py-3 rounded-xl font-semibold flex items-center gap-2"
+          >
+            <Trash2 className="w-5 h-5" />
+            <span>CLEAR</span>
+          </button>
         </div>
 
-        {error && (
-          <div className="p-4 bg-red-500/20 border border-red-500/50 rounded-xl">
-            <p className="text-red-400">{error}</p>
+        {/* Output Area */}
+        {result && (
+          <div className="mt-6 p-6 bg-void-800/50 rounded-xl border border-neon-cyan/20">
+            <h3 className="text-lg font-semibold text-neon-cyan mb-4">OUTPUT DATA</h3>
+            
+            <div className="space-y-4">
+              <div>
+                <p className="text-sm text-gray-400 mb-1">Generated MIDI</p>
+                <p className="text-neon-green font-mono">{result.midi_file}</p>
+              </div>
+              
+              {result.analysis && (
+                <div>
+                  <p className="text-sm text-gray-400 mb-2">Analysis Results</p>
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <span className="text-gray-400">Emotion:</span>
+                      <span className="text-neon-purple ml-2">{result.analysis.emotion || 'N/A'}</span>
+                    </div>
+                    <div>
+                      <span className="text-gray-400">Complexity:</span>
+                      <span className="text-neon-cyan ml-2">{result.analysis.complexity || 'N/A'}</span>
+                    </div>
+                    <div>
+                      <span className="text-gray-400">Duration:</span>
+                      <span className="text-neon-green ml-2">{result.analysis.duration || 'N/A'}</span>
+                    </div>
+                    <div>
+                      <span className="text-gray-400">Tracks:</span>
+                      <span className="text-neon-purple ml-2">{result.analysis.tracks || 'N/A'}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              <button
+                onClick={handleDownload}
+                className="glow-button px-6 py-2 rounded-lg font-semibold flex items-center gap-2 w-full justify-center"
+              >
+                <Music className="w-5 h-5" />
+                <span>DOWNLOAD MIDI</span>
+              </button>
+            </div>
           </div>
         )}
 
-        {result && (
-          <div className="p-6 bg-green-500/10 border border-green-500/30 rounded-xl space-y-3">
-            <h3 className="font-semibold text-green-400">✓ Transmutation Successful</h3>
-            <div className="grid grid-cols-2 gap-4 text-sm">
-              <div>
-                <p className="text-gray-400">Data Points</p>
-                <p className="font-semibold">{result.data_points}</p>
-              </div>
-              <div>
-                <p className="text-gray-400">Sentiment</p>
-                <p className="font-semibold">{result.sentiment?.toFixed(2)}</p>
-              </div>
-              <div>
-                <p className="text-gray-400">Arousal</p>
-                <p className="font-semibold">{result.arousal?.toFixed(2)}</p>
-              </div>
-              <div>
-                <p className="text-gray-400">Complexity</p>
-                <p className="font-semibold">{result.complexity?.toFixed(2)}</p>
-              </div>
-              <div>
-                <p className="text-gray-400">Generation Time</p>
-                <p className="font-semibold">{result.generation_time?.toFixed(3)}s</p>
-              </div>
-              <div>
-                <p className="text-gray-400">Cache Hit</p>
-                <p className="font-semibold">{result.cache_hit ? 'Yes' : 'No'}</p>
-              </div>
-            </div>
+        {/* Error Display */}
+        {error && (
+          <div className="mt-6 p-4 bg-neon-red/10 border border-neon-red/30 rounded-xl">
+            <p className="text-neon-red font-semibold">ERROR: {error}</p>
           </div>
         )}
       </div>

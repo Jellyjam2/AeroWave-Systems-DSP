@@ -1,14 +1,17 @@
-import { X, Github, Mail, Code, Music, Award, Zap } from 'lucide-react'
+import { X, Github, Mail, Code, Music, Award, Zap, Info, Cpu } from 'lucide-react'
 
 function DeveloperInfo({ onClose }) {
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="glass-card w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between p-6 border-b border-white/10">
-          <h2 className="text-2xl font-bold">Developer Information</h2>
+    <div className="fixed inset-0 bg-void-900/90 backdrop-blur-glass flex items-center justify-center z-50 p-4">
+      <div className="glass-card rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div className="flex items-center justify-between p-6 border-b border-glass-border">
+          <div className="flex items-center gap-3">
+            <Info className="w-6 h-6 text-neon-cyan" />
+            <h2 className="text-2xl font-bold neon-text-cyan">SYSTEM INFORMATION</h2>
+          </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-white/10 rounded-lg transition-all duration-300"
+            className="text-gray-400 hover:text-neon-cyan transition-colors"
           >
             <X className="w-6 h-6" />
           </button>
@@ -17,12 +20,12 @@ function DeveloperInfo({ onClose }) {
         <div className="p-6 space-y-6">
           {/* Profile Section */}
           <div className="text-center">
-            <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full flex items-center justify-center">
-              <span className="text-4xl font-bold">TBS</span>
+            <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-neon-cyan to-neon-purple rounded-full flex items-center justify-center shadow-neon-cyan">
+              <span className="text-4xl font-bold text-void-900">TBS</span>
             </div>
-            <h3 className="text-2xl font-bold">Titan Black Swan Technologies</h3>
-            <p className="text-gray-400 mt-2">Engineering Division</p>
-            <p className="text-primary-400 text-sm">AeroWave Systems DSP</p>
+            <h3 className="text-2xl font-bold neon-text-cyan">TITAN BLACK SWAN TECHNOLOGIES</h3>
+            <p className="text-gray-400 mt-2">ENGINEERING DIVISION</p>
+            <p className="text-neon-purple text-sm">AEROWAVE SYSTEMS DSP</p>
           </div>
 
           {/* Contact */}
@@ -31,84 +34,78 @@ function DeveloperInfo({ onClose }) {
               href="https://github.com/Titan-Black-Swan-Technologies"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-xl transition-all duration-300"
+              className="flex items-center gap-2 px-4 py-2 bg-glass-highlight hover:bg-glass-border rounded-xl transition-all duration-300 border border-glass-border"
             >
-              <Github className="w-5 h-5" />
-              <span>GitHub Organization</span>
+              <Github className="w-5 h-5 text-neon-cyan" />
+              <span className="text-neon-cyan">GITHUB ORGANIZATION</span>
             </a>
             <a
               href="mailto:engineering@blackswan.tech"
-              className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-xl transition-all duration-300"
+              className="flex items-center gap-2 px-4 py-2 bg-glass-highlight hover:bg-glass-border rounded-xl transition-all duration-300 border border-glass-border"
             >
-              <Mail className="w-5 h-5" />
-              <span>Contact Engineering</span>
+              <Mail className="w-5 h-5 text-neon-purple" />
+              <span className="text-neon-purple">CONTACT ENGINEERING</span>
             </a>
           </div>
 
           {/* About */}
           <div>
-            <h4 className="font-semibold mb-3 flex items-center gap-2">
-              <Code className="w-5 h-5 text-primary-400" />
-              About the Project
+            <h4 className="font-semibold mb-3 flex items-center gap-2 text-neon-cyan">
+              <Code className="w-5 h-5" />
+              SYSTEM OVERVIEW
             </h4>
             <p className="text-gray-300 text-sm leading-relaxed">
-              AeroWave Systems DSP is a cognitive audio synthesis engine that transforms multi-dimensional 
-              language semantics and physiological bio-signals into mathematically optimized multi-track 
-              orchestral music. Built to aerospace-grade reliability standards using NASA and Tesla 
-              architectural paradigms.
+              AeroWave Systems DSP is a deterministic, lock-free cognitive audio synthesis engine built to aerospace-grade reliability standards using NASA and Tesla architectural paradigms.
             </p>
           </div>
 
           {/* Technical Achievements */}
           <div>
-            <h4 className="font-semibold mb-3 flex items-center gap-2">
-              <Award className="w-5 h-5 text-accent-400" />
-              Technical Achievements
+            <h4 className="font-semibold mb-3 flex items-center gap-2 text-neon-purple">
+              <Award className="w-5 h-5" />
+              TECHNICAL SPECIFICATIONS
             </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div className="p-3 bg-white/5 rounded-xl">
-                <p className="text-sm text-gray-400">Formal Verification</p>
-                <p className="font-semibold text-green-400">Kani Verified ✓</p>
+            <div className="space-y-2 text-sm">
+              <div className="flex justify-between">
+                <span className="text-gray-400">Processing Speed</span>
+                <span className="text-neon-green font-mono">89,000x</span>
               </div>
-              <div className="p-3 bg-white/5 rounded-xl">
-                <p className="text-sm text-gray-400">Performance</p>
-                <p className="font-semibold text-accent-400">89,000x Speedup</p>
+              <div className="flex justify-between">
+                <span className="text-gray-400">Memory Allocation</span>
+                <span className="text-neon-cyan font-mono">Zero-Heap</span>
               </div>
-              <div className="p-3 bg-white/5 rounded-xl">
-                <p className="text-sm text-gray-400">Memory</p>
-                <p className="font-semibold text-primary-400">Zero Allocation</p>
+              <div className="flex justify-between">
+                <span className="text-gray-400">Thread Isolation</span>
+                <span className="text-neon-purple font-mono">Lock-Free</span>
               </div>
-              <div className="p-3 bg-white/5 rounded-xl">
-                <p className="text-sm text-gray-400">Concurrency</p>
-                <p className="font-semibold text-purple-400">Lock-Free</p>
+              <div className="flex justify-between">
+                <span className="text-gray-400">Formal Verification</span>
+                <span className="text-neon-green font-mono">Kani ✓</span>
               </div>
             </div>
           </div>
 
           {/* Core Technologies */}
           <div>
-            <h4 className="font-semibold mb-3 flex items-center gap-2">
-              <Zap className="w-5 h-5 text-yellow-400" />
-              Core Technologies
+            <h4 className="font-semibold mb-3 flex items-center gap-2 text-neon-cyan">
+              <Cpu className="w-5 h-5" />
+              CORE TECHNOLOGIES
             </h4>
             <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1 bg-primary-500/20 text-primary-400 rounded-full text-sm">Rust</span>
-              <span className="px-3 py-1 bg-accent-500/20 text-accent-400 rounded-full text-sm">Python</span>
-              <span className="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">PyO3</span>
-              <span className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">nalgebra</span>
-              <span className="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm">Flask</span>
-              <span className="px-3 py-1 bg-pink-500/20 text-pink-400 rounded-full text-sm">React</span>
-              <span className="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-sm">TailwindCSS</span>
+              <span className="px-3 py-1 bg-neon-cyan/20 text-neon-cyan rounded-full text-sm border border-neon-cyan/30">Rust</span>
+              <span className="px-3 py-1 bg-neon-purple/20 text-neon-purple rounded-full text-sm border border-neon-purple/30">Python</span>
+              <span className="px-3 py-1 bg-neon-green/20 text-neon-green rounded-full text-sm border border-neon-green/30">React</span>
+              <span className="px-3 py-1 bg-neon-cyan/20 text-neon-cyan rounded-full text-sm border border-neon-cyan/30">TailwindCSS</span>
             </div>
           </div>
 
           {/* License */}
-          <div className="p-4 bg-white/5 rounded-xl text-center">
+          <div className="p-4 bg-glass-highlight rounded-xl text-center border border-glass-border">
             <p className="text-sm text-gray-400">
-              Licensed under <span className="text-primary-400 font-semibold">Apache License 2.0</span>
+              Licensed under <span className="text-neon-cyan font-semibold">Apache License 2.0</span>
             </p>
             <p className="text-xs text-gray-500 mt-1">
-              © 2026 <span className="text-accent-400">Titan Black Swan Technologies</span>. All rights reserved.
+              2026 <span className="text-neon-purple">TITAN BLACK SWAN TECHNOLOGIES</span>. All rights reserved.
             </p>
           </div>
         </div>

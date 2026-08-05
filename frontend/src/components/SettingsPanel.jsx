@@ -1,14 +1,17 @@
-import { X, Volume2, Sliders, Globe, Palette } from 'lucide-react'
+import { X, Volume2, Sliders, Globe, Palette, Settings, Zap, Cpu, Eye } from 'lucide-react'
 
 function SettingsPanel({ onClose }) {
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="glass-card w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between p-6 border-b border-white/10">
-          <h2 className="text-2xl font-bold">Settings</h2>
+    <div className="fixed inset-0 bg-void-900/90 backdrop-blur-glass flex items-center justify-center z-50 p-4">
+      <div className="glass-card rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div className="flex items-center justify-between p-6 border-b border-glass-border">
+          <div className="flex items-center gap-3">
+            <Settings className="w-6 h-6 text-neon-cyan" />
+            <h2 className="text-2xl font-bold neon-text-cyan">COMMAND PARAMETERS</h2>
+          </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-white/10 rounded-lg transition-all duration-300"
+            className="text-gray-400 hover:text-neon-cyan transition-colors"
           >
             <X className="w-6 h-6" />
           </button>
@@ -17,25 +20,25 @@ function SettingsPanel({ onClose }) {
         <div className="p-6 space-y-8">
           {/* Audio Settings */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <Volume2 className="w-5 h-5 text-primary-400" />
-              <h3 className="text-lg font-semibold">Audio Settings</h3>
-            </div>
+            <h3 className="text-lg font-semibold text-neon-cyan mb-4 flex items-center gap-2">
+              <Zap className="w-5 h-5" />
+              AUDIO CONFIGURATION
+            </h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm text-gray-400 mb-2">Output Sample Rate</label>
-                <select className="input-field w-full">
-                  <option value="44100">44.1 kHz (CD Quality)</option>
-                  <option value="48000">48.0 kHz (Professional)</option>
-                  <option value="96000">96.0 kHz (High-Res)</option>
+                <label className="block text-sm text-gray-400 mb-2">Sample Rate</label>
+                <select className="input-field w-full rounded-lg p-3">
+                  <option>44100 Hz</option>
+                  <option>48000 Hz</option>
+                  <option>96000 Hz</option>
                 </select>
               </div>
               <div>
                 <label className="block text-sm text-gray-400 mb-2">Bit Depth</label>
-                <select className="input-field w-full">
-                  <option value="16">16-bit</option>
-                  <option value="24">24-bit</option>
-                  <option value="32">32-bit Float</option>
+                <select className="input-field w-full rounded-lg p-3">
+                  <option>16-bit</option>
+                  <option>24-bit</option>
+                  <option>32-bit</option>
                 </select>
               </div>
             </div>
@@ -43,80 +46,73 @@ function SettingsPanel({ onClose }) {
 
           {/* Processing Settings */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <Sliders className="w-5 h-5 text-accent-400" />
-              <h3 className="text-lg font-semibold">Processing Settings</h3>
-            </div>
+            <h3 className="text-lg font-semibold text-neon-purple mb-4 flex items-center gap-2">
+              <Cpu className="w-5 h-5" />
+              PROCESSING PARAMETERS
+            </h3>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm text-gray-400 mb-2">Complexity Level</label>
-                <input
-                  type="range"
-                  min="1"
-                  max="10"
-                  defaultValue="5"
-                  className="w-full"
-                />
-                <div className="flex justify-between text-xs text-gray-500 mt-1">
-                  <span>Simple</span>
-                  <span>Complex</span>
-                </div>
+                <select className="input-field w-full rounded-lg p-3">
+                  <option>Low</option>
+                  <option>Medium</option>
+                  <option>High</option>
+                  <option>Maximum</option>
+                </select>
               </div>
               <div>
                 <label className="block text-sm text-gray-400 mb-2">Cache Size (MB)</label>
                 <input
                   type="number"
                   defaultValue="64"
-                  min="16"
-                  max="512"
-                  className="input-field w-full"
+                  className="input-field w-full rounded-lg p-3"
                 />
               </div>
             </div>
           </div>
 
-          {/* Cultural Settings */}
+          {/* Cultural Context */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <Globe className="w-5 h-5 text-green-400" />
-              <h3 className="text-lg font-semibold">Cultural Context</h3>
-            </div>
+            <h3 className="text-lg font-semibold text-neon-green mb-4 flex items-center gap-2">
+              <Globe className="w-5 h-5" />
+              CULTURAL CONTEXT
+            </h3>
             <div>
-              <label className="block text-sm text-gray-400 mb-2">Default Cultural Style</label>
-              <select className="input-field w-full">
-                <option value="western">Western (Major Scale)</option>
-                <option value="eastern">Eastern (Pentatonic)</option>
-                <option value="african">African Scale</option>
-                <option value="latin">Latin Scale</option>
+              <label className="block text-sm text-gray-400 mb-2">Cultural Style</label>
+              <select className="input-field w-full rounded-lg p-3">
+                <option>Western Classical</option>
+                <option>Eastern Traditional</option>
+                <option>Contemporary</option>
+                <option>Experimental</option>
               </select>
             </div>
           </div>
 
-          {/* Appearance Settings */}
+          {/* Appearance */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <Palette className="w-5 h-5 text-purple-400" />
-              <h3 className="text-lg font-semibold">Appearance</h3>
-            </div>
+            <h3 className="text-lg font-semibold text-neon-cyan mb-4 flex items-center gap-2">
+              <Eye className="w-5 h-5" />
+              INTERFACE CONFIGURATION
+            </h3>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-400">Dark Mode</span>
-                <button className="w-12 h-6 bg-primary-500 rounded-full relative">
-                  <span className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full" />
-                </button>
+                <span className="text-gray-300">Dark Mode</span>
+                <div className="w-12 h-6 bg-neon-cyan/20 rounded-full relative cursor-pointer">
+                  <div className="absolute right-1 top-1 w-4 h-4 bg-neon-cyan rounded-full"></div>
+                </div>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-400">Animations</span>
-                <button className="w-12 h-6 bg-primary-500 rounded-full relative">
-                  <span className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full" />
-                </button>
+                <span className="text-gray-300">Animations</span>
+                <div className="w-12 h-6 bg-neon-cyan/20 rounded-full relative cursor-pointer">
+                  <div className="absolute right-1 top-1 w-4 h-4 bg-neon-cyan rounded-full"></div>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Save Button */}
-          <button className="glow-button w-full">
-            Save Settings
+          <button className="glow-button w-full py-3 rounded-xl font-semibold">
+            SAVE CONFIGURATION
           </button>
         </div>
       </div>

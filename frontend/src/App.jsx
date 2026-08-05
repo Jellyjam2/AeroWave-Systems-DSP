@@ -11,83 +11,82 @@ function App() {
   const [showShareModal, setShowShareModal] = useState(false)
 
   return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <header className="glass-card m-4 p-6">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="p-3 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl animate-pulse-slow">
-              <Music className="w-8 h-8 text-white" />
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
-                AeroWave Systems DSP
-              </h1>
-              <p className="text-sm text-gray-400">Cognitive Audio Synthesis Engine v1.0</p>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setShowShareModal(true)}
-              className="p-3 bg-white/10 hover:bg-white/20 rounded-xl transition-all duration-300 hover:scale-105"
-              title="Share"
-            >
-              <Share2 className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => setShowSettings(true)}
-              className="p-3 bg-white/10 hover:bg-white/20 rounded-xl transition-all duration-300 hover:scale-105"
-              title="Settings"
-            >
-              <Settings className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => setShowDeveloperInfo(true)}
-              className="p-3 bg-white/10 hover:bg-white/20 rounded-xl transition-all duration-300 hover:scale-105"
-              title="Developer Info"
-            >
-              <Info className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-void-gradient command-grid relative overflow-hidden">
+      {/* Ambient Glow Effects */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-neon-cyan/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-neon-purple/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+      </div>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
+      <div className="relative z-10 container mx-auto px-4 py-8 max-w-7xl">
+        {/* Header */}
+        <header className="glass-card rounded-2xl p-6 mb-8">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-4xl font-bold neon-text-cyan mb-2">AEROWAVE SYSTEMS DSP</h1>
+              <p className="text-gray-400">Cognitive Audio Synthesis Engine // Titan Command Interface</p>
+            </div>
+            <div className="flex gap-4">
+              <button
+                onClick={() => setShowSettings(true)}
+                className="glow-button px-6 py-3 rounded-xl font-semibold flex items-center gap-2"
+              >
+                <Settings className="w-5 h-5" />
+                <span>COMMAND</span>
+              </button>
+              <button
+                onClick={() => setShowDeveloperInfo(true)}
+                className="glow-button px-6 py-3 rounded-xl font-semibold flex items-center gap-2"
+              >
+                <Info className="w-5 h-5" />
+                <span>SYSTEM</span>
+              </button>
+              <button
+                onClick={() => setShowShareModal(true)}
+                className="glow-button px-6 py-3 rounded-xl font-semibold flex items-center gap-2"
+              >
+                <Share2 className="w-5 h-5" />
+                <span>TRANSMIT</span>
+              </button>
+            </div>
+          </div>
+        </header>
+
         {/* Status Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="glass-card p-6">
             <div className="flex items-center gap-3 mb-2">
-              <Sparkles className="w-6 h-6 text-primary-400" />
-              <h3 className="font-semibold">System Status</h3>
+              <Sparkles className="w-6 h-6 text-neon-cyan" />
+              <h3 className="font-semibold text-neon-cyan">System Status</h3>
             </div>
-            <p className="text-3xl font-bold text-green-400">Online</p>
+            <p className="text-3xl font-bold text-neon-green">ONLINE</p>
             <p className="text-sm text-gray-400">All systems operational</p>
           </div>
           
           <div className="glass-card p-6">
             <div className="flex items-center gap-3 mb-2">
-              <Zap className="w-6 h-6 text-accent-400" />
-              <h3 className="font-semibold">Processing Speed</h3>
+              <Zap className="w-6 h-6 text-neon-purple" />
+              <h3 className="font-semibold text-neon-purple">Processing Speed</h3>
             </div>
-            <p className="text-3xl font-bold text-accent-400">89,000x</p>
+            <p className="text-3xl font-bold text-neon-purple">89,000x</p>
             <p className="text-sm text-gray-400">Faster than traditional</p>
           </div>
           
           <div className="glass-card p-6">
             <div className="flex items-center gap-3 mb-2">
-              <Shield className="w-6 h-6 text-green-400" />
-              <h3 className="font-semibold">Formal Verification</h3>
+              <Shield className="w-6 h-6 text-neon-green" />
+              <h3 className="font-semibold text-neon-green">Formal Verification</h3>
             </div>
-            <p className="text-3xl font-bold text-green-400">✓ Passed</p>
+            <p className="text-3xl font-bold text-neon-green">✓ PASSED</p>
             <p className="text-sm text-gray-400">Kani verified</p>
           </div>
         </div>
 
         {/* Transmute Panel */}
-        <TransmutePanel />
-      </main>
+        <main>
+          <TransmutePanel />
+        </main>
+      </div>
 
       {/* Modals */}
       {showSettings && (
@@ -105,10 +104,10 @@ function App() {
       {/* Footer */}
       <footer className="glass-card m-4 p-6 text-center">
         <p className="text-gray-400">
-          © 2026 <span className="text-primary-400 font-semibold">Titan Black Swan Technologies</span> - AeroWave Systems DSP
+          © 2026 <span className="neon-text-cyan font-semibold">TITAN BLACK SWAN TECHNOLOGIES</span> - AEROWAVE SYSTEMS DSP
         </p>
         <p className="text-sm text-gray-500 mt-2">
-          Engineering Team | Licensed under Apache 2.0
+          ENGINEERING DIVISION // LICENSED UNDER APACHE 2.0
         </p>
       </footer>
     </div>
